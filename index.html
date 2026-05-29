@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eynec — Профессиональная модификация</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+        
+        :root {
+            --primary: #d4af37;
+            --bg-dark: #08090b;
+        }
+
+        body { 
+            background-color: var(--bg-dark); 
+            color: #f3f4f6; 
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f1c40f 50%, #8a6d1d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .eynec-card {
+            background: rgba(18, 20, 25, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(10px);
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .eynec-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .glow-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            color: #000;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .glow-btn:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            transform: scale(1.02);
+        }
+
+        .chat-scroll { height: 380px; overflow-y: auto; scrollbar-width: none; }
+        .chat-scroll::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-black/80 border-b border-white/5 py-4 px-8 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-3xl font-black gold-gradient italic tracking-tighter">Eynec</div>
+            <div class="flex items-center gap-8">
+                <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
+                    <a href="#features" class="hover:text-white transition">Функции</a>
+                    <a href="#pricing" class="hover:text-white transition">Цены</a>
+                    <a href="#faq" class="hover:text-white transition">FAQ</a>
+                </div>
+                <a href="https://t.me/Eynec" target="_blank" class="text-xs font-bold text-yellow-500 border border-yellow-500/20 px-6 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition uppercase">@Eynec</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+        <div class="reveal">
+            <h1 class="text-7xl md:text-9xl font-black text-white uppercase tracking-tighter mb-8">
+                LEVEL UP <span class="gold-gradient">EYNEC</span>
+            </h1>
+            <p class="text-gray-500 text-sm md:text-lg max-w-3xl mx-auto uppercase tracking-[0.4em] mb-12">
+                Программный комплекс нового поколения для доминации в реальном времени.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#pricing" class="glow-btn px-12 py-5 rounded-sm text-xs">Активировать доступ</a>
+                <a href="https://t.me/Eynec" target="_blank" class="bg-white/5 border border-white/10 px-12 py-5 rounded-sm text-xs font-bold uppercase hover:bg-white/10 transition">Поддержка</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="eynec-card p-10 rounded-xl reveal">
+            <i class="fas fa-eye text-yellow-500 text-3xl mb-8"></i>
+            <h3 class="text-white font-bold text-xl mb-4 uppercase">Vision Core</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">Система видит карты соперника и точный запас его эликсира. Данные подгружаются напрямую из потока сервера.</p>
+        </div>
+        <div class="eynec-card p-10 rounded-xl reveal" style="transition-delay: 0.1s;">
+            <i class="fas fa-bolt text-yellow-500 text-3xl mb-8"></i>
+            <h3 class="text-white font-bold text-xl mb-4 uppercase">Infinite Flow</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">Модуль бесконечного эликсира. Позволяет игнорировать стандартные лимиты накопления ресурсов в бою.</p>
+        </div>
+        <div class="eynec-card p-10 rounded-xl reveal" style="transition-delay: 0.2s;">
+            <i class="fas fa-palette text-yellow-500 text-3xl mb-8"></i>
+            <h3 class="text-white font-bold text-xl mb-4 uppercase">Visual Unlock</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">Полный доступ ко всем скинам башен и библиотеке эмодзи. Ваш профиль выглядит премиально.</p>
+        </div>
+        <div class="eynec-card p-10 rounded-xl md:col-span-3 flex flex-col md:flex-row items-center justify-between gap-8 reveal" style="transition-delay: 0.3s;">
+            <div class="max-w-2xl">
+                <h3 class="text-white font-bold text-xl mb-4 uppercase italic">AI Auto-Deployment System</h3>
+                <p class="text-xs text-gray-500">Интеллектуальный бот самостоятельно анализирует ситуацию на арене и выставляет карты для идеальной защиты и атаки. Имитирует клики реального человека.</p>
+            </div>
+            <i class="fas fa-brain text-yellow-500 text-5xl opacity-30"></i>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="max-w-7xl mx-auto px-6 py-32">
+        <h2 class="text-center text-4xl font-black text-white uppercase mb-20 tracking-widest">Тарифные <span class="text-yellow-500">Планы</span></h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="eynec-card p-8 rounded text-center reveal">
+                <p class="text-[10px] text-gray-500 font-bold mb-4 uppercase tracking-widest">1 Месяц</p>
+                <p class="text-4xl font-black text-white mb-8">300 <span class="text-sm text-yellow-500 italic font-bold">STARS</span></p>
+                <button onclick="window.open('https://t.me/Eynec_bot?start=month1', '_blank')" class="glow-btn w-full py-3 rounded text-[10px]">Выбрать</button>
+            </div>
+            <div class="eynec-card p-8 rounded text-center border-yellow-500/40 relative reveal" style="transition-delay: 0.1s;">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-500 text-black text-[8px] font-black px-4 py-1 rounded-full uppercase">Популярно</div>
+                <p class="text-[10px] text-gray-500 font-bold mb-4 uppercase tracking-widest">3 Месяца</p>
+                <p class="text-4xl font-black text-white mb-8">500 <span class="text-sm text-yellow-500 italic font-bold">STARS</span></p>
+                <button onclick="window.open('https://t.me/Eynec_bot?start=month3', '_blank')" class="glow-btn w-full py-3 rounded text-[10px]">Выбрать</button>
+            </div>
+            <div class="eynec-card p-8 rounded text-center reveal" style="transition-delay: 0.2s;">
+                <p class="text-[10px] text-gray-500 font-bold mb-4 uppercase tracking-widest">6 Месяцев</p>
+                <p class="text-4xl font-black text-white mb-8">750 <span class="text-sm text-yellow-500 italic font-bold">STARS</span></p>
+                <button onclick="window.open('https://t.me/Eynec_bot?start=month6', '_blank')" class="glow-btn w-full py-3 rounded text-[10px]">Выбрать</button>
+            </div>
+            <div class="eynec-card p-8 rounded text-center border-yellow-500 reveal" style="transition-delay: 0.3s;">
+                <p class="text-[10px] text-yellow-500 font-bold mb-4 uppercase tracking-widest">Lifetime</p>
+                <p class="text-4xl font-black text-white mb-8">1000 <span class="text-sm text-yellow-500 italic font-bold">STARS</span></p>
+                <button onclick="window.open('https://t.me/Eynec_bot?start=lifetime', '_blank')" class="glow-btn w-full py-3 rounded text-[10px]">Купить Навсегда</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ & AI CHAT -->
+    <section id="faq" class="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div class="reveal">
+            <h3 class="text-3xl font-black text-white uppercase mb-10 border-l-4 border-yellow-500 pl-6 tracking-tighter">FAQ</h3>
+            <div class="space-y-8 text-xs">
+                <div>
+                    <h5 class="text-white font-bold mb-2 uppercase tracking-widest">Безопасно ли это?</h5>
+                    <p class="text-gray-500 leading-relaxed">Система использует Bypass v4.0. Инжекция происходит на уровне ядра, что делает софт невидимым для стандартных методов обнаружения анти-чита.</p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-2 uppercase tracking-widest">Как активировать?</h5>
+                    <p class="text-gray-500 leading-relaxed">После оплаты в боте вы получите уникальный ключ. Введите его в клиенте Eynec для мгновенной разблокировки всех функций.</p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-2 uppercase tracking-widest">Поддержка устройств?</h5>
+                    <p class="text-gray-500 leading-relaxed">Софт работает на всех актуальных версиях Android и iOS (без джейлбрейка) и Windows PC.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="eynec-card rounded-2xl p-8 h-[500px] flex flex-col reveal">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/5 text-[10px] font-bold text-yellow-500 uppercase tracking-widest">
+                <span>Eynec Neural Assistant</span>
+                <span class="text-green-500 animate-pulse">Online</span>
+            </div>
+            <div id="chat-box" class="chat-scroll flex-1 space-y-4 mb-6 pr-2 text-[11px] leading-relaxed text-gray-300">
+                <div class="bg-white/5 p-4 rounded-xl border-l-2 border-yellow-500">
+                    Приветствую. Я ИИ Eynec. Спроси меня об обходе анти-чита, работе авто-боя или дешифровке карт.
+                </div>
+            </div>
+            <div class="relative">
+                <input type="text" id="chat-input" placeholder="Введите ваш вопрос..." 
+                    class="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-xs text-white focus:outline-none focus:border-yellow-500 transition">
+                <button onclick="handleSend()" class="absolute right-4 top-1/2 -translate-y-1/2 text-yellow-500 hover:scale-110 transition">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 text-center border-t border-white/5 reveal">
+        <div class="text-4xl font-black gold-gradient italic mb-8">Eynec</div>
+        <p class="text-[9px] text-gray-700 tracking-[0.5em] uppercase">Eynec Systems &copy; 2026. All operations secured.</p>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        const chatBox = document.getElementById('chat-box');
+        const chatInput = document.getElementById('chat-input');
+
+        function handleSend() {
+            const val = chatInput.value.trim();
+            if(!val) return;
+
+            chatBox.innerHTML += `<div class="bg-yellow-500/10 p-4 rounded-xl text-right text-white ml-10 border-r-2 border-yellow-500">${val}</div>`;
+            chatInput.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(() => {
+                let res = "Анализирую запрос... Для покупки и детальной инфо обратитесь в @Eynec_bot.";
+                const t = val.toLowerCase();
+
+                if(t.includes("безопасн") || t.includes("бан") || t.includes("античит")) {
+                    res = "Используется Stealth-Injection. Мы перехватываем данные сервера до их обработки клиентом, что делает бан невозможным.";
+                } else if(t.includes("авто") || t.includes("бот") || t.includes("ставит")) {
+                    res = "AI бот имитирует движение пальца человека. Он рассчитывает эликсир противника и выставляет контр-пики с точностью до 0.1 сек.";
+                } else if(t.includes("эликсир") || t.includes("карт")) {
+                    res = "Vision Core дешифрует пакеты данных. Вы видите руку оппонента и его точный запас эликсира прямо над его башнями.";
+                }
+
+                chatBox.innerHTML += `<div class="bg-white/5 p-4 rounded-xl border-l-2 border-yellow-500 italic">Eynec AI: ${res}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 700);
+        }
+        chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleSend(); });
+    </script>
+</body>
+</html>
