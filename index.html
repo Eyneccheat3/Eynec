@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eynec — Premium Gaming Services 2026</title>
+    <title>EYNEC — Ultimate Gaming Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;700;900&display=swap');
 
         :root {
             --bg-black: #0A0A0A;
@@ -23,53 +23,54 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            font-size: 1.2rem; /* Увеличен базовый шрифт */
         }
 
-        h1, h2, .logo { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: -2px; }
+        h1, h2, .logo { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
 
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
 
         .glass {
             background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        .reveal { opacity: 0; transform: translateY(50px); transition: 1s ease-out; }
+        .reveal { opacity: 0; transform: translateY(60px); transition: 1.2s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .section-title { font-size: 5rem; line-height: 1; margin-bottom: 2rem; }
-        
-        /* Цвета секций */
-        .bs-glow:hover { box-shadow: 0 0 50px rgba(255, 77, 77, 0.2); border-color: var(--bs-red); }
-        .cr-glow:hover { box-shadow: 0 0 50px rgba(212, 175, 55, 0.2); border-color: var(--cr-gold); }
-        .coc-glow:hover { box-shadow: 0 0 50px rgba(46, 204, 113, 0.2); border-color: var(--coc-green); }
+        /* Огромные заголовки */
+        .hero-title { font-size: clamp(4rem, 15vw, 15rem); line-height: 0.8; font-weight: 900; }
+        .section-title { font-size: clamp(3rem, 8vw, 8rem); line-height: 1; margin-bottom: 4rem; }
 
-        /* Чат */
-        .chat-window {
+        .game-card { min-height: 450px; display: flex; flex-direction: column; justify-content: space-between; }
+        
+        /* Исправленный Чат */
+        #ai-chat {
             position: fixed;
-            bottom: 100px;
+            bottom: 120px;
             right: 30px;
-            width: 400px;
-            height: 550px;
-            z-index: 1000;
-            display: none;
+            width: 450px;
+            height: 650px;
+            z-index: 9999;
+            display: none; /* Переключается скриптом */
             flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(10, 10, 10, 0.95);
         }
-        .chat-messages { flex: 1; overflow-y: auto; padding-right: 10px; scrollbar-width: thin; }
-        .chat-messages::-webkit-scrollbar { width: 4px; }
-        .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
+
+        .chat-messages { flex: 1; overflow-y: auto; padding: 20px; }
+        .chat-messages::-webkit-scrollbar { width: 5px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+
+        .glow-red:hover { box-shadow: 0 0 80px rgba(255, 77, 77, 0.25); border-color: var(--bs-red); }
+        .glow-gold:hover { box-shadow: 0 0 80px rgba(212, 175, 55, 0.25); border-color: var(--cr-gold); }
+        .glow-green:hover { box-shadow: 0 0 80px rgba(46, 204, 113, 0.25); border-color: var(--coc-green); }
 
         @media (max-width: 768px) {
-            .section-title { font-size: 3rem; }
-            .chat-window { width: 90%; right: 5%; bottom: 90px; }
+            #ai-chat { width: 95%; right: 2.5%; bottom: 100px; height: 70vh; }
+            .hero-title { font-size: 5rem; }
         }
     </style>
 </head>
@@ -77,73 +78,61 @@
 
     <div id="particles-js"></div>
 
-    <!-- HEADER -->
-    <nav class="fixed top-0 w-full z-[100] glass py-8 px-12 flex justify-between items-center">
-        <div class="logo text-3xl font-bold tracking-tighter">EYNEC</div>
-        <div class="space-x-12 text-[11px] uppercase font-bold tracking-[0.3em] hidden lg:flex">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-[1000] glass py-10 px-16 flex justify-between items-center">
+        <div class="logo text-4xl font-bold tracking-tighter">EYNEC</div>
+        <div class="hidden xl:flex space-x-16 text-xs uppercase font-black tracking-[0.4em]">
             <a href="#bs" class="hover:text-red-500 transition-all">Brawl Stars</a>
             <a href="#cr" class="hover:text-yellow-500 transition-all">Clash Royale</a>
             <a href="#coc" class="hover:text-green-500 transition-all">Clash of Clans</a>
         </div>
-        <a href="https://t.me/Eynec" target="_blank" class="bg-white text-black px-10 py-3 rounded-sm text-[10px] font-black uppercase hover:invert transition-all">Support</a>
+        <a href="https://t.me/Eynec" target="_blank" class="bg-white text-black px-12 py-4 rounded-full text-xs font-black uppercase hover:scale-110 transition-all">Support</a>
     </nav>
 
-    <!-- HERO -->
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
-        <h1 class="text-7xl md:text-[12rem] font-black mb-8 reveal active leading-none">EYNEC</h1>
-        <p class="text-gray-400 text-xl md:text-3xl max-w-4xl reveal active italic font-light" style="transition-delay: 0.2s;">
+    <!-- HERO SECTION -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-10">
+        <h1 class="hero-title reveal active">EYNEC</h1>
+        <p class="text-gray-500 text-2xl md:text-4xl max-w-5xl mt-10 reveal active italic font-light" style="transition-delay: 0.2s;">
             «Мы помогаем игрокам развиваться, а они помогают развиваться нам»
         </p>
-        <div class="mt-16 reveal active" style="transition-delay: 0.4s;">
-            <a href="#bs" class="px-16 py-6 border border-white/20 hover:bg-white hover:text-black transition-all duration-500 text-sm font-bold uppercase tracking-widest">Открыть каталог</a>
+        <div class="mt-20 reveal active" style="transition-delay: 0.4s;">
+            <a href="#bs" class="inline-block px-20 py-8 bg-transparent border-2 border-white/20 text-white font-black uppercase text-sm tracking-[0.5em] hover:bg-white hover:text-black transition-all duration-700">Explore Catalog</a>
         </div>
     </section>
 
     <!-- BRAWL STARS -->
-    <section id="bs" class="py-40 px-10 border-t border-red-500/30 bg-gradient-to-b from-red-900/5 to-transparent">
-        <div class="max-w-[1600px] mx-auto">
-            <h2 class="section-title text-red-500 reveal">Brawl Stars</h2>
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-20 items-start">
+    <section id="bs" class="py-60 px-10 border-t border-red-500/20">
+        <div class="max-w-[1700px] mx-auto">
+            <h2 class="section-title text-red-600 reveal">Brawl Stars</h2>
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-32">
                 <div class="reveal">
-                    <div class="flex gap-10 mb-12 text-sm uppercase tracking-widest text-gray-500 font-bold">
-                        <span><i class="fas fa-users text-red-500 mr-2"></i> 6000+ Online</span>
-                        <span><i class="fas fa-microchip text-red-500 mr-2"></i> 120 FPS</span>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="glass p-10 rounded-2xl bs-glow">
-                            <h4 class="text-xl font-bold mb-4 text-red-500 uppercase">Aimbot (Smart Focus)</h4>
-                            <p class="text-gray-400 leading-relaxed">Автоматическое наведение с предиктом 100%.</p>
+                    <p class="text-gray-400 text-xl mb-16 leading-relaxed max-w-2xl">Премиальные модули для полной доминации. Стабильность, обход анти-чита и 120 FPS. Активных пользователей: 6000+</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="glass p-12 rounded-3xl glow-red game-card">
+                            <h4 class="text-2xl font-bold text-red-500 mb-4 uppercase">Aimbot (Smart Focus)</h4>
+                            <p class="text-gray-500 text-lg">Автоматическое наведение с предиктом 100%.</p>
                         </div>
-                        <div class="glass p-10 rounded-2xl bs-glow">
-                            <h4 class="text-xl font-bold mb-4 text-red-500 uppercase">Auto-Dodge</h4>
-                            <p class="text-gray-400 leading-relaxed">Авто-уклонение от всех летящих снарядов.</p>
-                        </div>
-                        <div class="glass p-10 rounded-2xl bs-glow">
-                            <h4 class="text-xl font-bold mb-4 text-red-500 uppercase">Bush ESP</h4>
-                            <p class="text-gray-400 leading-relaxed">Полная видимость противников в кустах.</p>
-                        </div>
-                        <div class="glass p-10 rounded-2xl bs-glow">
-                            <h4 class="text-xl font-bold mb-4 text-red-500 uppercase">TP Hack</h4>
-                            <p class="text-gray-400 leading-relaxed">Микро-телепортация для уклонения и атак.</p>
+                        <div class="glass p-12 rounded-3xl glow-red game-card">
+                            <h4 class="text-2xl font-bold text-red-500 mb-4 uppercase">Auto-Dodge</h4>
+                            <p class="text-gray-500 text-lg">Уклонение от снарядов в реальном времени.</p>
                         </div>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
-                    <div class="glass p-12 text-center rounded-3xl border-white/5">
-                        <h5 class="text-gray-500 text-xs mb-6 uppercase font-black">1 Month</h5>
-                        <p class="text-5xl font-black mb-10">250 <span class="text-lg text-red-500 italic">★</span></p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-5 bg-red-500 rounded-xl font-black uppercase text-xs hover:scale-105 transition-transform">Buy Now</button>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 reveal">
+                    <div class="glass p-16 text-center rounded-[3rem]">
+                        <span class="text-gray-600 font-bold text-xs uppercase tracking-widest">1 Month</span>
+                        <p class="text-6xl font-black my-10 text-white">250 ★</p>
+                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-red-600 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition">Buy</button>
                     </div>
-                    <div class="glass p-12 text-center rounded-3xl border-red-500 relative shadow-2xl shadow-red-500/10">
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-red-500 text-[10px] font-black px-6 py-2 rounded-full uppercase">Most Popular</div>
-                        <h5 class="text-gray-500 text-xs mb-6 uppercase font-black">3 Months</h5>
-                        <p class="text-5xl font-black mb-10">600 <span class="text-lg text-red-500 italic">★</span></p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-5 bg-red-500 rounded-xl font-black uppercase text-xs hover:scale-105 transition-transform">Buy Now</button>
+                    <div class="glass p-16 text-center rounded-[3rem] border-red-600 scale-110 shadow-2xl shadow-red-600/20">
+                        <span class="text-red-500 font-bold text-xs uppercase tracking-widest">3 Months</span>
+                        <p class="text-6xl font-black my-10 text-white">600 ★</p>
+                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-red-600 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition">Buy</button>
                     </div>
-                    <div class="glass p-12 text-center rounded-3xl border-white/5">
-                        <h5 class="text-gray-500 text-xs mb-6 uppercase font-black">Infinite</h5>
-                        <p class="text-5xl font-black mb-10">1000 <span class="text-lg text-red-500 italic">★</span></p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-5 bg-red-500 rounded-xl font-black uppercase text-xs hover:scale-105 transition-transform">Buy Now</button>
+                    <div class="glass p-16 text-center rounded-[3rem]">
+                        <span class="text-gray-600 font-bold text-xs uppercase tracking-widest">Life</span>
+                        <p class="text-6xl font-black my-10 text-white">1000 ★</p>
+                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-red-600 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition">Buy</button>
                     </div>
                 </div>
             </div>
@@ -151,141 +140,97 @@
     </section>
 
     <!-- CLASH ROYALE -->
-    <section id="cr" class="py-40 px-10 border-t border-yellow-500/30 bg-gradient-to-b from-yellow-900/5 to-transparent">
-        <div class="max-w-[1600px] mx-auto">
-            <h2 class="section-title text-yellow-500 text-right reveal">Clash Royale</h2>
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-20 items-start mt-20">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 order-2 xl:order-1 reveal">
-                    <div class="glass p-12 text-center rounded-3xl">
-                        <p class="text-xs text-gray-500 mb-6 uppercase font-black">1 Month</p>
-                        <p class="text-5xl font-black mb-10">300</p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-5 bg-yellow-500 text-black rounded-xl font-black uppercase text-xs hover:scale-105 transition-transform">Buy Now</button>
+    <section id="cr" class="py-60 px-10 border-t border-yellow-500/20 bg-gradient-to-b from-yellow-900/5 to-transparent">
+        <div class="max-w-[1700px] mx-auto text-right">
+            <h2 class="section-title text-yellow-500 reveal">Clash Royale</h2>
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-32 mt-20 items-center">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 order-2 xl:order-1 reveal">
+                    <div class="glass p-16 text-center rounded-[3rem]">
+                        <p class="text-6xl font-black mb-10">300</p>
+                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-yellow-500 text-black rounded-2xl font-black uppercase tracking-widest">Buy Now</button>
                     </div>
-                    <div class="glass p-12 text-center rounded-3xl border-yellow-500/40 shadow-2xl shadow-yellow-500/10">
-                        <p class="text-xs text-gray-500 mb-6 uppercase font-black">3 Months</p>
-                        <p class="text-5xl font-black mb-10">600</p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-5 bg-yellow-500 text-black rounded-xl font-black uppercase text-xs hover:scale-105 transition-transform">Buy Now</button>
+                    <div class="glass p-16 text-center rounded-[3rem] border-yellow-500 scale-110">
+                        <p class="text-6xl font-black mb-10">600</p>
+                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-yellow-500 text-black rounded-2xl font-black uppercase tracking-widest">Buy Now</button>
                     </div>
-                    <div class="glass p-12 text-center rounded-3xl">
-                        <p class="text-xs text-gray-500 mb-6 uppercase font-black">Infinite</p>
-                        <p class="text-5xl font-black mb-10">1000</p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-5 bg-yellow-500 text-black rounded-xl font-black uppercase text-xs hover:scale-105 transition-transform">Buy Now</button>
+                    <div class="glass p-16 text-center rounded-[3rem]">
+                        <p class="text-6xl font-black mb-10">1000</p>
+                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-yellow-500 text-black rounded-2xl font-black uppercase tracking-widest">Buy Now</button>
                     </div>
                 </div>
-                <div class="reveal order-1 xl:order-2 space-y-8">
-                    <div class="glass p-10 rounded-2xl cr-glow border-l-4 border-l-yellow-500">
-                        <h4 class="text-xl font-bold text-yellow-500 mb-4 uppercase italic">Vision Core</h4>
-                        <p class="text-gray-400">Отображение карт в руке противника и его точного эликсира.</p>
+                <div class="reveal order-1 xl:order-2 space-y-10">
+                    <div class="glass p-12 rounded-3xl glow-gold text-right border-r-8 border-r-yellow-500">
+                        <h4 class="text-3xl font-black text-yellow-500 mb-4 uppercase">Vision Core</h4>
+                        <p class="text-gray-400 text-xl italic">Видь все карты и эликсир врага мгновенно.</p>
                     </div>
-                    <div class="glass p-10 rounded-2xl cr-glow border-l-4 border-l-yellow-500">
-                        <h4 class="text-xl font-bold text-yellow-500 mb-4 uppercase italic">AI Auto-Deployment</h4>
-                        <p class="text-gray-400">Интеллектуальный бот для идеальных контр-пиков и высадки.</p>
+                    <div class="glass p-12 rounded-3xl glow-gold text-right border-r-8 border-r-yellow-500">
+                        <h4 class="text-3xl font-black text-yellow-500 mb-4 uppercase">AI Deploy</h4>
+                        <p class="text-gray-400 text-xl italic">Автоматическая идеальная высадка войск.</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CLASH OF CLANS -->
-    <section id="coc" class="py-40 px-10 border-t border-green-500/30 bg-gradient-to-b from-green-900/5 to-transparent">
-        <div class="max-w-[1600px] mx-auto text-center">
-            <h2 class="section-title text-green-500 reveal mb-24">Clash of Clans</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24 reveal">
-                <div class="glass p-12 rounded-3xl coc-glow">
-                    <i class="fas fa-tractor text-green-500 text-5xl mb-8"></i>
-                    <h4 class="text-xl font-black mb-4 uppercase">Auto-Farm</h4>
-                    <p class="text-gray-500 text-sm">Бесконечный сбор ресурсов 24/7.</p>
-                </div>
-                <div class="glass p-12 rounded-3xl coc-glow">
-                    <i class="fas fa-ghost text-green-500 text-5xl mb-8"></i>
-                    <h4 class="text-xl font-black mb-4 uppercase">Attack Sim</h4>
-                    <p class="text-gray-500 text-sm">Тренировка атак на любую базу.</p>
-                </div>
-                <div class="glass p-12 rounded-3xl coc-glow">
-                    <i class="fas fa-eye text-green-500 text-5xl mb-8"></i>
-                    <h4 class="text-xl font-black mb-4 uppercase">Trap Reveal</h4>
-                    <p class="text-gray-500 text-sm">Все ловушки видны до атаки.</p>
-                </div>
-                <div class="glass p-12 rounded-3xl coc-glow">
-                    <i class="fas fa-gift text-green-500 text-5xl mb-8"></i>
-                    <h4 class="text-xl font-black mb-4 uppercase">Auto-Donate</h4>
-                    <p class="text-gray-500 text-sm">Мгновенная раздача войск клану.</p>
-                </div>
-            </div>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
-                <div class="glass p-12 rounded-3xl border-white/5">
-                    <p class="text-5xl font-black mb-4">400</p>
-                    <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-4 bg-green-500 rounded-xl font-black uppercase text-[10px]">Buy Now</button>
-                </div>
-                <div class="glass p-12 rounded-3xl border-green-500 scale-110 shadow-2xl shadow-green-500/10">
-                    <p class="text-5xl font-black mb-4">800</p>
-                    <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-4 bg-green-500 rounded-xl font-black uppercase text-[10px]">Buy Now</button>
-                </div>
-                <div class="glass p-12 rounded-3xl border-white/5">
-                    <p class="text-5xl font-black mb-4">1500</p>
-                    <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-4 bg-green-500 rounded-xl font-black uppercase text-[10px]">Buy Now</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-40 border-t border-white/5 text-center">
-        <h2 class="logo text-6xl font-bold mb-10 text-white/10 italic">EYNEC</h2>
-        <p class="text-gray-700 text-xs tracking-[1em] uppercase mb-10">Premium Gaming Solutions 2026</p>
-        <div class="flex justify-center gap-12 text-3xl">
-            <a href="https://t.me/Eynec" target="_blank" class="hover:text-blue-400 transition-all"><i class="fab fa-telegram"></i></a>
-            <a href="https://t.me/Eynec_bot" target="_blank" class="hover:text-blue-500 transition-all"><i class="fas fa-robot"></i></a>
+    <footer class="py-60 border-t border-white/5 text-center">
+        <h2 class="logo text-[10vw] font-bold mb-20 text-white/5">EYNEC</h2>
+        <div class="flex justify-center gap-20 text-6xl">
+            <a href="https://t.me/Eynec" target="_blank" class="hover:text-blue-400 transition-all scale-150"><i class="fab fa-telegram"></i></a>
+            <a href="https://t.me/Eynec_bot" target="_blank" class="hover:text-blue-500 transition-all scale-150"><i class="fas fa-robot"></i></a>
         </div>
+        <p class="mt-40 text-gray-800 text-sm tracking-[1.5em] uppercase">Eynec Solutions &copy; 2026</p>
     </footer>
 
-    <!-- AI CHAT BUTTON -->
-    <button onclick="toggleChat()" class="fixed bottom-10 right-10 w-20 h-20 bg-white text-black rounded-full shadow-2xl flex items-center justify-center z-[1100] hover:scale-110 active:scale-95 transition-all">
-        <i class="fas fa-brain text-2xl"></i>
+    <!-- AI CHAT TOGGLE -->
+    <button onclick="toggleChat()" class="fixed bottom-10 right-10 w-24 h-24 bg-white text-black rounded-full shadow-[0_0_50px_rgba(255,255,255,0.3)] flex items-center justify-center z-[10000] hover:scale-110 active:scale-95 transition-all">
+        <i class="fas fa-brain text-4xl"></i>
     </button>
 
-    <!-- AI CHAT WINDOW -->
-    <div id="ai-chat" class="chat-window glass rounded-3xl p-8 shadow-2xl">
-        <div class="flex justify-between items-center mb-8">
+    <!-- AI CHAT INTERFACE -->
+    <div id="ai-chat" class="glass rounded-[2rem] shadow-2xl flex flex-col">
+        <div class="p-8 border-b border-white/10 flex justify-between items-center">
             <div>
-                <h3 class="text-sm font-black uppercase tracking-widest text-white">Eynec AI</h3>
-                <p class="text-[9px] text-green-500 uppercase font-bold mt-1">Online & ready</p>
+                <h3 class="text-xl font-black uppercase text-white tracking-widest">Eynec AI</h3>
+                <p class="text-xs text-green-500 font-bold uppercase mt-1 tracking-tighter">Ready to assist</p>
             </div>
-            <button onclick="toggleChat()" class="text-white/20 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            <button onclick="toggleChat()" class="text-white/30 hover:text-white transition"><i class="fas fa-times text-2xl"></i></button>
         </div>
-        <div id="chat-messages" class="chat-messages space-y-6">
-            <div class="bg-white/5 p-5 rounded-2xl rounded-tl-none text-xs leading-relaxed border border-white/5">
-                Привет! Я персональный ИИ Eynec. Чем могу помочь? Я знаю всё о функциях для Brawl Stars, Clash Royale и CoC.
+        <div id="chat-messages" class="chat-messages space-y-8">
+            <div class="bg-white/5 p-6 rounded-3xl rounded-tl-none text-sm leading-relaxed border border-white/5">
+                Привет! Я ИИ-ассистент Eynec. Спрашивай о функциях для Brawl Stars, Clash Royale или CoC.
             </div>
         </div>
-        <div class="mt-6 flex gap-3">
-            <input type="text" id="chat-input" placeholder="Задай вопрос..." class="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-xs focus:outline-none focus:border-white/40 transition-all">
-            <button id="send-btn" onclick="sendMessage()" class="w-14 h-14 bg-white text-black rounded-2xl flex items-center justify-center hover:bg-gray-200 transition-all">
-                <i class="fas fa-paper-plane text-sm"></i>
-            </button>
+        <div class="p-8 bg-white/5 mt-auto">
+            <div class="flex gap-4">
+                <input type="text" id="chat-input" placeholder="Введите вопрос..." class="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-sm focus:outline-none focus:border-white/40 transition-all text-white">
+                <button id="send-btn" class="w-16 h-16 bg-white text-black rounded-2xl flex items-center justify-center hover:bg-gray-200 transition-all">
+                    <i class="fas fa-paper-plane text-xl"></i>
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Particles setup
+        // Particles Background
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 100, "density": { "enable": true, "value_area": 1000 } },
                 "color": { "value": "#ffffff" },
-                "opacity": { "value": 0.15 },
-                "size": { "value": 2, "random": true },
+                "opacity": { "value": 0.15, "random": true },
+                "size": { "value": 3, "random": true },
                 "line_linked": { "enable": true, "distance": 200, "color": "#ffffff", "opacity": 0.05, "width": 1 },
                 "move": { "enable": true, "speed": 1 }
             }
         });
 
-        // Reveal logic
+        // Reveal effect on scroll
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
+                if (elementTop < windowHeight - 150) {
                     reveals[i].classList.add("active");
                 }
             }
@@ -293,51 +238,61 @@
         window.addEventListener("scroll", reveal);
         reveal();
 
-        // AI Chat Fixes
+        // CHAT LOGIC - RE-FIXED
+        const chatWindow = document.getElementById('ai-chat');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const messagesContainer = document.getElementById('chat-messages');
+
         function toggleChat() {
-            const chat = document.getElementById('ai-chat');
-            const isVisible = chat.style.display === 'flex';
-            chat.style.display = isVisible ? 'none' : 'flex';
+            chatWindow.style.display = (chatWindow.style.display === 'flex') ? 'none' : 'flex';
+            if(chatWindow.style.display === 'flex') chatInput.focus();
         }
 
-        function sendMessage() {
-            const input = document.getElementById('chat-input');
-            const messages = document.getElementById('chat-messages');
-            const text = input.value.trim();
-            
+        function handleSend() {
+            const text = chatInput.value.trim();
             if(!text) return;
 
-            // User message
-            messages.innerHTML += `<div class="text-right"><div class="inline-block bg-white/10 p-4 rounded-2xl rounded-tr-none text-xs border border-white/5">${text}</div></div>`;
-            input.value = '';
-            messages.scrollTop = messages.scrollHeight;
+            // User bubble
+            messagesContainer.innerHTML += `
+                <div class="text-right">
+                    <div class="inline-block bg-white/10 p-5 rounded-[2rem] rounded-tr-none text-sm border border-white/10">
+                        ${text}
+                    </div>
+                </div>`;
+            
+            chatInput.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-            // AI response
+            // AI Logic
             setTimeout(() => {
-                let response = "Я специализируюсь только на софте Eynec для Brawl Stars, Clash Royale и Clash of Clans. Уточни вопрос!";
-                const lowText = text.toLowerCase();
-                
-                if(lowText.includes('бравл') || lowText.includes('brawl')) {
-                    response = "В Brawl Stars у нас есть мощный Aimbot и Auto-Dodge. Софт полностью обходит анти-чит и поддерживает 120 FPS.";
-                } else if(lowText.includes('рояль') || lowText.includes('royale')) {
-                    response = "Для Clash Royale мы предлагаем Vision Core (просмотр карт врага) и AI-автовысадку. Идеально для пуша кубков.";
-                } else if(lowText.includes('клаш') || lowText.includes('clans')) {
-                    response = "В Clash of Clans популярен Auto-Farm и Trap Revealer. Можно безопасно фармить ресурсы 24/7.";
-                } else if(lowText.includes('купить') || lowText.includes('цена')) {
-                    response = "Все покупки проходят через нашего бота @Eynec_bot. Просто выбери нужный тариф и следуй инструкции.";
+                let response = "Я могу рассказать только о функциях Eynec для Brawl Stars, Clash Royale и Clash of Clans. Что именно тебя интересует?";
+                const low = text.toLowerCase();
+
+                if(low.includes('бравл') || low.includes('brawl')) {
+                    response = "В Brawl Stars у нас есть Aimbot, Auto-Dodge и Bush ESP. Все функции обходят анти-чит Supercell.";
+                } else if(low.includes('рояль') || low.includes('royale')) {
+                    response = "Для Clash Royale доступен Vision Core (карты/эликсир врага) и AI-бот для высадки карт.";
+                } else if(low.includes('купить') || low.includes('цена')) {
+                    response = "Цены указаны на сайте. Для покупки перейди в нашего бота: @Eynec_bot.";
                 }
 
-                messages.innerHTML += `<div class="bg-white/5 p-5 rounded-2xl rounded-tl-none text-xs italic border border-white/5 text-gray-400">AI: ${response}</div>`;
-                messages.scrollTop = messages.scrollHeight;
-            }, 700);
+                messagesContainer.innerHTML += `
+                    <div class="text-left">
+                        <div class="inline-block bg-white/5 p-6 rounded-[2rem] rounded-tl-none text-sm italic text-gray-400 border border-white/5">
+                            AI: ${response}
+                        </div>
+                    </div>`;
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 600);
         }
 
-        // Enter key support
-        document.getElementById('chat-input').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
+        // Listeners for chat
+        sendBtn.addEventListener('click', handleSend);
+        chatInput.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') handleSend();
         });
+
     </script>
 </body>
 </html>
