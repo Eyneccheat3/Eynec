@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eynec — Premium Cyber Systems Framework</title>
+    <title>Eynec — Ultimate Cyber Systems Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -26,7 +26,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Кастомный футуристичный скроллбар */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -34,11 +33,11 @@
             background: #050505;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1c1c1e;
+            background: #222;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #3a3a3c;
+            background: #444;
         }
 
         h1, h2, h3, .font-sync { 
@@ -54,20 +53,18 @@
             z-index: -1; 
         }
 
-        /* Премиальный Glassmorphism */
         .glass-premium {
             background: rgba(255, 255, 255, 0.01);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .glass-premium:hover {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 255, 255, 0.09);
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.08);
         }
 
-        /* Оптимизированный движок анимаций */
         .reveal { 
             opacity: 0; 
             transform: translateY(30px); 
@@ -78,18 +75,16 @@
             transform: translateY(0); 
         }
 
-        /* Эффекты неонового свечения при наведении */
         .glow-red:hover { box-shadow: 0 0 40px rgba(255, 51, 51, 0.15); border-color: var(--bs-red); }
         .glow-gold:hover { box-shadow: 0 0 40px rgba(243, 156, 18, 0.15); border-color: var(--cr-gold); }
         .glow-green:hover { box-shadow: 0 0 40px rgba(39, 174, 96, 0.15); border-color: var(--coc-green); }
 
-        /* Архитектура чата */
-        .chat-window {
+        #ai-chat-window {
             position: fixed;
             bottom: 100px;
             right: 30px;
-            width: 380px;
-            height: 560px;
+            width: 400px;
+            height: 580px;
             z-index: 9999;
             display: none;
             flex-direction: column;
@@ -107,7 +102,7 @@
         }
         .chat-messages-container::-webkit-scrollbar { display: none; }
 
-        /* Индикатор генерации ответа ИИ */
+        /* Анимация точек загрузки ИИ */
         .typing-dot {
             animation: typingBounce 1.4s infinite ease-in-out both;
         }
@@ -125,59 +120,58 @@
     <div id="particles-js"></div>
 
     <nav class="fixed top-0 w-full z-[1000] glass-premium py-5 px-8 flex justify-between items-center border-b border-white/5">
-        <div class="font-sync text-xl tracking-tighter text-white">EYNEC</div>
+        <div class="font-sync text-lg tracking-tighter text-white">EYNEC</div>
         <div class="hidden lg:flex space-x-10 text-[10px] font-bold tracking-[0.3em] uppercase">
             <a href="#bs" class="hover:text-red-500 transition-colors">Brawl Stars</a>
             <a href="#cr" class="hover:text-yellow-400 transition-colors">Clash Royale</a>
             <a href="#coc" class="hover:text-green-400 transition-colors">Clash of Clans</a>
-            <a href="#status" class="hover:text-blue-400 transition-colors">Мониторинг</a>
-            <a href="#matrix" class="hover:text-purple-400 transition-colors">Аналитика</a>
+            <a href="#status" class="hover:text-blue-400 transition-colors">Статус систем</a>
+            <a href="#matrix" class="hover:text-purple-400 transition-colors">Анализ</a>
         </div>
         <a href="https://t.me/Eynec" target="_blank" class="border border-white/10 text-white rounded-full px-6 py-2 text-[10px] uppercase font-semibold tracking-widest hover:bg-white hover:text-black transition-all">Support</a>
     </nav>
 
-    <div class="fixed top-[73px] w-full bg-white/[0.01] border-b border-white/5 py-2 px-6 z-[999] overflow-hidden text-[10px] tracking-wider text-gray-500 flex items-center gap-4">
+    <div class="fixed top-[73px] w-full bg-white/[0.02] border-b border-white/5 py-2 px-6 z-[999] overflow-hidden text-[10px] tracking-wider text-gray-500 flex items-center gap-4">
         <span class="flex h-2 w-2 rounded-full bg-green-500 animate-ping"></span>
-        <div id="live-ticker-text" class="transition-all duration-500">Ядро фреймворка синхронизировано успешно. Ожидание команд...</div>
+        <div id="live-ticker-text" class="transition-all duration-500">Система мониторинга запущена. Все шлюзы стабильны.</div>
     </div>
 
     <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-32">
-        <span class="text-[10px] tracking-[0.6em] text-white/30 uppercase mb-4 reveal active">Next-Gen Internal Overlay Ecosystem</span>
+        <span class="text-[10px] tracking-[0.6em] text-white/30 uppercase mb-4 reveal active">Premium Cybernetic Software</span>
         <h1 class="text-6xl md:text-9xl font-black text-white tracking-tighter mb-6 reveal active" style="transition-delay: 0.1s;">EYNEC</h1>
         <p class="text-gray-400 text-lg md:text-xl max-w-3xl italic font-light leading-relaxed reveal active" style="transition-delay: 0.2s;">
             «Мы помогаем игрокам развиваться, а они помогают развиваться нам»
         </p>
         <div class="mt-12 flex flex-col sm:flex-row gap-4 reveal active" style="transition-delay: 0.3s;">
-            <a href="#bs" class="bg-white text-black text-xs font-bold uppercase tracking-widest px-10 py-4 rounded-sm hover:bg-gray-200 transition-all">Внедрить модули</a>
+            <a href="#bs" class="bg-white text-black text-xs font-bold uppercase tracking-widest px-10 py-4 rounded-sm hover:bg-gray-200 transition-all">Конфигуратор</a>
             <a href="#status" class="border border-white/10 text-white text-xs font-bold uppercase tracking-widest px-10 py-4 rounded-sm hover:bg-white/5 transition-all">Статус ядра</a>
         </div>
-        <p class="mt-24 text-gray-600 text-[9px] uppercase tracking-[0.6em] hidden md:block">"The only way to win is to break the rules flawlessly."</p>
     </section>
 
     <section id="status" class="py-32 px-6 max-w-6xl mx-auto border-t border-white/5">
         <div class="text-center mb-16">
-            <h2 class="text-2xl md:text-3xl text-white font-bold mb-3">Состояние шлюзов (Мониторинг 2026)</h2>
-            <p class="text-xs text-gray-500 uppercase tracking-widest">OTA-синхронизация обновлений выполняется в фоне автоматически</p>
+            <h2 class="text-2xl md:text-3xl text-white font-bold mb-3">Состояние модулей (2026)</h2>
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Автоматическое обновление каждые 60 секунд</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
             <div class="glass-premium p-6 rounded-2xl flex justify-between items-center">
                 <div>
                     <h4 class="text-xs text-gray-400 uppercase font-bold">Brawl Stars Bypass</h4>
-                    <p class="text-[10px] text-gray-600 mt-1">Build v4.82 • Ring 0 Integration</p>
+                    <p class="text-[10px] text-gray-600 mt-1">Build v4.82 • Kernel Level</p>
                 </div>
                 <span class="bg-green-500/10 text-green-400 text-[10px] font-black px-3 py-1.5 rounded-md border border-green-500/20 uppercase tracking-wider">Undetected</span>
             </div>
             <div class="glass-premium p-6 rounded-2xl flex justify-between items-center">
                 <div>
-                    <h4 class="text-xs text-gray-400 uppercase font-bold">Clash Royale Hook</h4>
-                    <p class="text-[10px] text-gray-600 mt-1">Build v3.11 • Packet Encryption</p>
+                    <h4 class="text-xs text-gray-400 uppercase font-bold">Clash Royale Core</h4>
+                    <p class="text-[10px] text-gray-600 mt-1">Build v3.11 • Memory Hook</p>
                 </div>
                 <span class="bg-green-500/10 text-green-400 text-[10px] font-black px-3 py-1.5 rounded-md border border-green-500/20 uppercase tracking-wider">Undetected</span>
             </div>
             <div class="glass-premium p-6 rounded-2xl flex justify-between items-center">
                 <div>
                     <h4 class="text-xs text-gray-400 uppercase font-bold">Clash of Clans Grid</h4>
-                    <p class="text-[10px] text-gray-600 mt-1">Build v9.40 • Behavior Emulator</p>
+                    <p class="text-[10px] text-gray-600 mt-1">Build v9.40 • Packet Injection</p>
                 </div>
                 <span class="bg-green-500/10 text-green-400 text-[10px] font-black px-3 py-1.5 rounded-md border border-green-500/20 uppercase tracking-wider">Undetected</span>
             </div>
@@ -190,46 +184,59 @@
                 <span class="text-red-500 text-xs font-bold uppercase tracking-widest">Internal Module 01</span>
                 <h2 class="text-4xl md:text-6xl text-white font-bold mt-2">Brawl Stars</h2>
             </div>
-            <p class="text-gray-500 text-xs leading-relaxed lg:text-right max-w-sm ml-auto">
-                Интеграция модификаций напрямую в графический пайплайн. Поддерживает стабильную частоту кадров до 120 FPS без просадок.
+            <p class="text-gray-500 text-xs leading-relaxed lg:text-right">
+                Программный комплекс, внедряющийся непосредственно в графический конвейер устройства. Полное отсутствие задержек ввода-вывода.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
             <div class="glass-premium p-8 rounded-2xl border-l-2 border-red-500 glow-red">
-                <h3 class="text-sm font-bold text-white mb-2">Aimbot (Smart Focus)</h3>
-                <p class="text-xs text-gray-500 leading-relaxed">Векторный предикт траектории движения цели с учётом текущей скорости снаряда и пинга.</p>
+                <i class="fas fa-crosshairs text-red-500 text-xl mb-4"></i>
+                <h3 class="text-sm font-bold text-white mb-2">Predictive Aimbot</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Система динамического упреждения. Алгоритм вычисляет вектор движения цели, ширину снаряда и текущий пинг для стопроцентного попадания.</p>
             </div>
             <div class="glass-premium p-8 rounded-2xl border-l-2 border-red-500 glow-red">
-                <h3 class="text-sm font-bold text-white mb-2">Auto-Dodge System</h3>
-                <p class="text-xs text-gray-500 leading-relaxed">Потоковый анализ летящих угроз. Микро-смещения персонажа для уклонения на пиксельном уровне.</p>
+                <i class="fas fa-shield-alt text-red-500 text-xl mb-4"></i>
+                <h3 class="text-sm font-bold text-white mb-2">Vector Auto-Dodge</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Потоковый анализ входящих пакетов. Устройство автоматически смещает персонажа с траектории летящих атак на пиксельном уровне.</p>
             </div>
             <div class="glass-premium p-8 rounded-2xl border-l-2 border-red-500 glow-red">
+                <i class="fas fa-eye text-red-500 text-xl mb-4"></i>
                 <h3 class="text-sm font-bold text-white mb-2">Quantum Bush ESP</h3>
-                <p class="text-xs text-gray-500 leading-relaxed">Рендеринг скрытых хитбоксов оппонентов внутри кустов и зон невидимости с индикацией здоровья.</p>
+                <p class="text-xs text-gray-500 leading-relaxed">Рендеринг скрытых объектов. Отрисовывает контуры всех противников в кустах и зонах невидимости, добавляя индикацию их здоровья.</p>
             </div>
             <div class="glass-premium p-8 rounded-2xl border-l-2 border-red-500 glow-red">
-                <h3 class="text-sm font-bold text-white mb-2">Macro Teleport Hack</h3>
-                <p class="text-xs text-gray-500 leading-relaxed">Безопасная оптимизация сетевых пакетов для моментального каста ультимативных способностей.</p>
+                <i class="fas fa-bolt text-red-500 text-xl mb-4"></i>
+                <h3 class="text-sm font-bold text-white mb-2">Macro Automator</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Интеллектуальное прожатие способностей. Программа мгновенно использует защитные гаджеты или ульту при угрозе моментального уничтожения.</p>
+            </div>
+            <div class="glass-premium p-8 rounded-2xl border-l-2 border-red-500 glow-red">
+                <i class="fas fa-user-secret text-red-500 text-xl mb-4"></i>
+                <h3 class="text-sm font-bold text-white mb-2">Anti-Spectate Guard</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Сглаживание движений для зрителей. Скрипт маскирует работу аима под естественные движения пальцев, исключая подозрения при просмотре.</p>
+            </div>
+            <div class="glass-premium p-8 rounded-2xl border-l-2 border-red-500 glow-red">
+                <i class="fas fa-palette text-red-500 text-xl mb-4"></i>
+                <h3 class="text-sm font-bold text-white mb-2">Visual Skin Changer</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Локальная подмена ассетов. Позволяет выбрать любой скин, пин или анимацию атаки, которые будут полноценно отображаться у вас.</p>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 reveal">
             <div class="glass-premium p-8 text-center rounded-2xl">
-                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">1 Месяц Доступа</span>
+                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">Лицензия 1 Месяц</span>
                 <p class="text-4xl font-bold my-4 text-white">250 <span class="text-xs text-red-500">Stars</span></p>
-                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-red-500 hover:text-white rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Активировать</button>
+                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-red-500 hover:text-white rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Купить подписку</button>
             </div>
-            <div class="glass-premium p-8 text-center rounded-2xl border border-red-500/30 bg-red-500/[0.01] relative">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-500 text-[8px] font-black px-4 py-1 rounded-full uppercase tracking-widest">Best Choice</div>
-                <span class="text-red-400 text-[10px] font-bold uppercase tracking-wider">3 Месяца Доступа</span>
+            <div class="glass-premium p-8 text-center rounded-2xl border border-red-500/30 bg-red-500/[0.01]">
+                <span class="text-red-400 text-[10px] font-bold uppercase tracking-wider">Лицензия 3 Месяца</span>
                 <p class="text-4xl font-bold my-4 text-white">600 <span class="text-xs text-red-500">Stars</span></p>
-                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-red-500 text-white rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Активировать</button>
+                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-red-500 text-white rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all shadow-lg shadow-red-500/10">Купить подписку</button>
             </div>
             <div class="glass-premium p-8 text-center rounded-2xl">
-                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">Безлимитный Доступ</span>
+                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">Лицензия Навсегда</span>
                 <p class="text-4xl font-bold my-4 text-white">1000 <span class="text-xs text-red-500">Stars</span></p>
-                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-red-500 hover:text-white rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Активировать</button>
+                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-red-500 hover:text-white rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Купить подписку</button>
             </div>
         </div>
     </section>
@@ -241,44 +248,43 @@
                 <h2 class="text-4xl md:text-6xl text-white font-bold mt-2">Clash Royale</h2>
             </div>
             <p class="lg:col-span-2 text-gray-500 text-xs leading-relaxed lg:text-right max-w-xl ml-auto">
-                Комплексный перехват входящего трафика боя. Локально дешифрует данные, предоставляя полную информацию о состоянии колоды соперника.
+                Комплекс сетевого перехвата. Анализирует входящие логи боя, определяя полную колоду соперника, ротацию его карт и точный баланс эликсира.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
             <div class="glass-premium p-8 rounded-2xl border-l-2 border-yellow-500 glow-gold">
-                <h3 class="text-sm font-bold text-white mb-2">Vision Core Handler</h3>
-                <p class="text-xs text-gray-500 leading-relaxed">Полный мапхак руки оппонента. Панель отображает 4 карты, находящиеся у врага прямо сейчас.</p>
+                <i class="fas fa-eye text-yellow-500 text-xl mb-4"></i>
+                <h3 class="text-sm font-bold text-white mb-2">Vision Core (Deck Reveal)</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Полный мапхак руки. Выводит интерфейс с четырьмя картами, которые находятся в руке у оппонента в данный момент времени.</p>
             </div>
             <div class="glass-premium p-8 rounded-2xl border-l-2 border-yellow-500 glow-gold">
-                <h3 class="text-sm font-bold text-white mb-2">Elixir Flow Tracker</h3>
-                <p class="text-xs text-gray-500 leading-relaxed">Потоковый динамический калькулятор. Выводит точный баланс эликсира противника до сотых долей.</p>
+                <i class="fas fa-calculator text-yellow-500 text-xl mb-4"></i>
+                <h3 class="text-sm font-bold text-white mb-2">Elixir Counter Realtime</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Потоковый калькулятор затрат. Графическая шкала над ником соперника с точностью до десятых долей отображает его эликсир.</p>
             </div>
             <div class="glass-premium p-8 rounded-2xl border-l-2 border-yellow-500 glow-gold">
-                <h3 class="text-sm font-bold text-white mb-2">AI Auto-Deployment</h3>
-                <p class="text-xs text-gray-500 leading-relaxed">Оптимальные тайминги высадки юнитов на арену для эффективного кайтинга вражеских танков.</p>
-            </div>
-            <div class="glass-premium p-8 rounded-2xl border-l-2 border-yellow-500 glow-gold">
-                <h3 class="text-sm font-bold text-white mb-2">Asset Skin Changer</h3>
-                <p class="text-xs text-gray-500 leading-relaxed">Локальная подмена и кастомизация скинов башен, эмодзи и анимаций без риска детекта.</p>
+                <i class="fas fa-robot text-yellow-500 text-xl mb-4"></i>
+                <h3 class="text-sm font-bold text-white mb-2">AI Optimal Placement</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Подсказки траекторий высадки. Программа подсвечивает конкретную плитку на арене для наиболее эффективного кайтинга войск.</p>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 reveal">
             <div class="glass-premium p-8 text-center rounded-2xl">
-                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">1 Месяц Доступа</span>
+                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">Лицензия 1 Месяц</span>
                 <p class="text-4xl font-bold my-4 text-white">300 <span class="text-xs text-yellow-500">Stars</span></p>
-                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-yellow-500 hover:text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Активировать</button>
+                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-yellow-500 hover:text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Купить подписку</button>
             </div>
             <div class="glass-premium p-8 text-center rounded-2xl border border-yellow-500/30 bg-yellow-500/[0.01]">
-                <span class="text-yellow-400 text-[10px] font-bold uppercase tracking-wider">3 Месяца Доступа</span>
+                <span class="text-yellow-400 text-[10px] font-bold uppercase tracking-wider">Лицензия 3 Месяца</span>
                 <p class="text-4xl font-bold my-4 text-white">600 <span class="text-xs text-yellow-500">Stars</span></p>
-                <button onclick="window.open('https://yellow-500', '_blank')" class="w-full py-3 bg-yellow-500 text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Активировать</button>
+                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-yellow-500 text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Купить подписку</button>
             </div>
             <div class="glass-premium p-8 text-center rounded-2xl">
-                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">Безлимитный Доступ</span>
+                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">Лицензия Навсегда</span>
                 <p class="text-4xl font-bold my-4 text-white">1000 <span class="text-xs text-yellow-500">Stars</span></p>
-                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-yellow-500 hover:text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Активировать</button>
+                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-yellow-500 hover:text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Купить подписку</button>
             </div>
         </div>
     </section>
@@ -290,48 +296,43 @@
                 <h2 class="text-4xl md:text-6xl text-white font-bold mt-2">Clash of Clans</h2>
             </div>
             <p class="text-gray-500 text-xs leading-relaxed lg:text-right">
-                Макро-движок полной автоматизации игровых сессий. Имитирует паттерны поведения реального игрока, исключая поведенческий анализ анти-бот систем.
+                Макро-движок полной автоматизации игрового процесса. Эмулирует паттерны поведения реального пользователя, обходя анти-бот системы.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-            <div class="glass-premium p-6 rounded-2xl border-l-2 border-green-500 glow-green">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+            <div class="glass-premium p-8 rounded-2xl border-l-2 border-green-500 glow-green">
                 <i class="fas fa-wheat-awn text-green-500 text-xl mb-4"></i>
-                <h4 class="font-bold mb-2 text-sm">Smart Auto-Farm</h4>
-                <p class="text-[11px] text-gray-500">Автономный поиск заброшенных баз и сбор ресурсов 24/7 по умным алгоритмам высадки.</p>
+                <h3 class="text-sm font-bold text-white mb-2">Smart Auto-Farm Bot</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Круглосуточный автоматический поиск баз. Высаживает войска по идеальной дуге для сбора максимального количества ресурсов из заброшенных шахт.</p>
             </div>
-            <div class="glass-premium p-6 rounded-2xl border-l-2 border-green-500 glow-green">
-                <i class="fas fa-crosshairs text-green-500 text-xl mb-4"></i>
-                <h4 class="font-bold mb-2 text-sm">Sandbox Attack Sim</h4>
-                <p class="text-[11px] text-gray-500">Песочница для тренировки атак на любые базы в КВ без реальной траты войск и фиксации результата.</p>
+            <div class="glass-premium p-8 rounded-2xl border-l-2 border-green-500 glow-green">
+                <i class="fas fa-bullseye text-green-500 text-xl mb-4"></i>
+                <h3 class="text-sm font-bold text-white mb-2">Trap & Tesla Revealer</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Раскрытие тумана войны. На этапе разведки в КВ отображает точное расположение всех скрытых потайных тесл, бомб и ловушек скелетов.</p>
             </div>
-            <div class="glass-premium p-6 rounded-2xl border-l-2 border-green-500 glow-green">
-                <i class="fas fa-search text-green-500 text-xl mb-4"></i>
-                <h4 class="font-bold mb-2 text-sm">Trap & Tesla Revealer</h4>
-                <p class="text-[11px] text-gray-500">Полное раскрытие тумана войны на этапе разведки. Отображает все скрытые теслы и бомбы.</p>
-            </div>
-            <div class="glass-premium p-6 rounded-2xl border-l-2 border-green-500 glow-green">
-                <i class="fas fa-hand-holding-heart text-green-500 text-xl mb-4"></i>
-                <h4 class="font-bold mb-2 text-sm">Auto-Donate Engine</h4>
-                <p class="text-[11px] text-gray-500">Моментальная автоматическая раздача войск соклановцам по ключевым словам в запросах КК.</p>
+            <div class="glass-premium p-8 rounded-2xl border-l-2 border-green-500 glow-green">
+                <i class="fas fa-vial text-green-500 text-xl mb-4"></i>
+                <h3 class="text-sm font-bold text-white mb-2">Sandbox Attack Sim</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Песочница для тренировки. Позволяет запустить полнофункциональную симуляцию атаки на любую базу в КВ без реальной траты вашей армии.</p>
             </div>
         </div>
 
-        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 reveal">
-            <div class="glass-premium p-8 rounded-2xl text-center">
-                <p class="text-xs mb-4 text-gray-500 uppercase">1 Месяц Доступа</p>
-                <p class="text-4xl font-black mb-6 text-white">400 <span class="text-xs text-green-500">Stars</span></p>
-                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-green-500 hover:text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Активировать</button>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 reveal">
+            <div class="glass-premium p-8 text-center rounded-2xl">
+                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">Лицензия 1 Месяц</span>
+                <p class="text-4xl font-bold my-4 text-white">400 <span class="text-xs text-green-500">Stars</span></p>
+                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-green-500 hover:text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Купить подписку</button>
             </div>
-            <div class="glass-premium p-8 rounded-2xl border-green-500 border bg-green-500/[0.01] text-center">
-                <p class="text-xs mb-4 text-gray-400 uppercase font-bold">3 Месяца Доступа</p>
-                <p class="text-4xl font-black mb-6 text-white">800 <span class="text-xs text-green-500">Stars</span></p>
-                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-green-500 text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Активировать</button>
+            <div class="glass-premium p-8 text-center rounded-2xl border border-green-500/30 bg-green-500/[0.01]">
+                <span class="text-green-400 text-[10px] font-bold uppercase tracking-wider">Лицензия 3 Месяца</span>
+                <p class="text-4xl font-bold my-4 text-white">800 <span class="text-xs text-green-500">Stars</span></p>
+                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-green-500 text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Купить подписку</button>
             </div>
-            <div class="glass-premium p-8 rounded-2xl text-center">
-                <p class="text-xs mb-4 text-gray-500 uppercase">Безлимитный Доступ</p>
-                <p class="text-4xl font-black mb-6 text-white">1500 <span class="text-xs text-green-500">Stars</span></p>
-                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-green-500 hover:text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Активировать</button>
+            <div class="glass-premium p-8 text-center rounded-2xl">
+                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">Лицензия Навсегда</span>
+                <p class="text-4xl font-bold my-4 text-white">1500 <span class="text-xs text-green-500">Stars</span></p>
+                <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-3 bg-white/5 hover:bg-green-500 hover:text-black rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">Купить подписку</button>
             </div>
         </div>
     </section>
@@ -343,221 +344,207 @@
                 <thead>
                     <tr class="border-b border-white/10 bg-white/5 text-gray-400 font-bold text-[10px] tracking-wider uppercase">
                         <th class="p-6">Технический критерий</th>
-                        <th class="p-6">Обычные паблик модификации</th>
-                        <th class="p-6 text-white">Eynec Framework Core</th>
+                        <th class="p-6">Стандартные читы</th>
+                        <th class="p-6 text-white">Eynec Premium Framework</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-white/5 text-gray-400">
                     <tr>
                         <td class="p-6 font-medium text-white">Метод интеграции в ОС</td>
-                        <td class="p-6 text-red-500">User-mode (Легко детектится памятью игры)</td>
-                        <td class="p-6 text-green-500 font-bold">Kernel-level bypass overlay (Глубокий обход)</td>
+                        <td class="p-6 text-red-500">User-mode (легко детектится)</td>
+                        <td class="p-6 text-green-500 font-bold">Kernel-level bypass overlay</td>
                     </tr>
                     <tr>
                         <td class="p-6 font-medium text-white">Обновление базы сигнатур</td>
-                        <td class="p-6">Вручную (С задержкой до недель после патча)</td>
-                        <td class="p-6 text-green-500 font-bold">Автоматически (OTA Cloud Realtime Sync)</td>
+                        <td class="p-6">Вручную (раз в месяц)</td>
+                        <td class="p-6 text-green-500 font-bold">Автоматически (OTA Cloud Sync)</td>
                     </tr>
                     <tr>
                         <td class="p-6 font-medium text-white">Предикт баллистики атак</td>
-                        <td class="p-6">Линейный статический (Частые промахи)</td>
-                        <td class="p-6 text-green-500 font-bold">Динамический 3D-векторный с учётом задержки сети</td>
+                        <td class="p-6">Линейный (без учета пинга)</td>
+                        <td class="p-6 text-green-500 font-bold">Динамический 3D-векторный</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <section class="py-32 px-6 max-w-4xl mx-auto border-t border-white/5">
-        <h2 class="text-center text-3xl font-bold mb-16 uppercase italic text-white">Common Questions</h2>
-        <div class="space-y-4">
-            <div class="glass-premium p-6 rounded-xl reveal">
-                <h4 class="font-bold mb-2 text-sm text-white">Безопасно ли использование сервиса?</h4>
-                <p class="text-xs text-gray-500 leading-relaxed">Да. Наши модули функционируют обособленно от основного стека памяти приложения. Мониторинг безопасности блокирует любые запросы на сканирование процессов со стороны античита.</p>
-            </div>
-            <div class="glass-premium p-6 rounded-xl reveal">
-                <h4 class="font-bold mb-2 text-sm text-white">Как быстро приходит доступ?</h4>
-                <p class="text-xs text-gray-500 leading-relaxed">Мгновенно. Вся инфраструктура завязана на автоматизированный шлюз. Сразу после верификации транзакции в боте генерируется персональный токен доступа.</p>
-            </div>
-            <div class="glass-premium p-6 rounded-xl reveal">
-                <h4 class="font-bold mb-2 text-sm text-white">Есть ли поддержка обновлений?</h4>
-                <p class="text-xs text-gray-500 leading-relaxed">Да, поддержка работает в режиме 24/7. При выходе глобальных патчей в играх наши серверные шлюзы перестраивают сигнатуры автономно за несколько минут.</p>
-            </div>
-        </div>
-    </section>
-
     <footer class="py-20 border-t border-white/5 text-center bg-black/40">
-        <div class="logo text-4xl font-bold mb-8 text-white/5 tracking-widest">EYNEC GROUP</div>
-        <div class="flex justify-center gap-10 mb-10 text-xl">
+        <div class="font-sync text-4xl text-white/5 mb-8 tracking-widest">EYNEC GROUP</div>
+        <div class="flex justify-center gap-8 text-2xl mb-12">
             <a href="https://t.me/Eynec" target="_blank" class="text-gray-600 hover:text-blue-400 transition-colors"><i class="fab fa-telegram"></i></a>
             <a href="https://t.me/Eynec_bot" target="_blank" class="text-gray-600 hover:text-blue-500 transition-colors"><i class="fas fa-robot"></i></a>
         </div>
-        <p class="text-[8px] text-gray-700 tracking-[1.2em] uppercase">Eynec Systems Framework &copy; 2026. All rights reserved.</p>
+        <p class="text-[9px] text-gray-700 tracking-[1.5em] uppercase">Eynec Systems Group &copy; 2026. Разработано для доминации.</p>
     </footer>
 
-    <button onclick="toggleChatWindow()" class="fixed bottom-6 right-6 w-16 h-16 bg-white text-black rounded-full shadow-2xl flex items-center justify-center z-[10000] hover:scale-110 active:scale-95 transition-all duration-300">
+    <button onclick="toggleChatWindow()" class="fixed bottom-8 right-8 w-16 h-16 bg-white text-black rounded-full shadow-2xl z-[10000] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300">
         <i class="fas fa-brain text-xl"></i>
     </button>
 
-    <div id="ai-chat" class="chat-window glass-premium p-5">
-        <div class="flex justify-between items-center mb-4 border-b border-white/5 pb-3 bg-white/[0.01]">
+    <div id="ai-chat-window" class="glass-premium">
+        <div class="p-5 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
             <div>
-                <h3 class="text-[10px] font-bold uppercase tracking-widest text-white">Eynec Neural Terminal</h3>
-                <p class="text-[8px] text-green-400 font-bold uppercase mt-1 flex items-center gap-1">
-                    <span class="w-1 h-1 rounded-full bg-green-400 animate-pulse"></span> Модуль активен
+                <h3 class="text-[10px] font-bold text-white tracking-widest uppercase">Eynec Neural Terminal</h3>
+                <p class="text-[8px] text-green-400 font-bold uppercase mt-1 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Модуль активен
                 </p>
             </div>
-            <button onclick="toggleChatWindow()" class="text-white/30 hover:text-white transition-colors"><i class="fas fa-times"></i></button>
+            <button onclick="toggleChatWindow()" class="text-white/30 hover:text-white transition-colors"><i class="fas fa-times text-lg"></i></button>
         </div>
 
-        <div id="chat-messages" class="chat-messages-container space-y-4 pr-1">
+        <div id="chat-messages-box" class="chat-messages-container space-y-4">
             <div class="bg-white/5 p-4 rounded-2xl rounded-tl-none text-[11px] leading-relaxed text-gray-300 border border-white/5">
-                Приветствую. Я нейросетевой ассистент платформы **Eynec**. Сформируй любой технический запрос или воспользуйся быстрыми пресетами команд ниже.
+                Приветствую. Я ИИ-ассистент платформы **Eynec**. Сформируй запрос ниже или выбери одну из быстрых команд для мгновенной выгрузки документации.
             </div>
         </div>
 
-        <div class="py-2 flex flex-wrap gap-1 border-t border-white/5 bg-black/20 my-2 rounded-xl px-2">
-            <button onclick="sendQuickMessage('Brawl Stars Модули')" class="text-[9px] bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white px-2 py-1 rounded-md transition-all border border-white/5">Brawl Stars</button>
-            <button onclick="sendQuickMessage('Clash Royale Софт')" class="text-[9px] bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white px-2 py-1 rounded-md transition-all border border-white/5">Clash Royale</button>
-            <button onclick="sendQuickMessage('Цены Подписок')" class="text-[9px] bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white px-2 py-1 rounded-md transition-all border border-white/5">Цены подписок</button>
-            <button onclick="sendQuickMessage('Статус Античита')" class="text-[9px] bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white px-2 py-1 rounded-md transition-all border border-white/5">Безопасность</button>
+        <div class="px-4 py-2 flex flex-wrap gap-1.5 border-t border-white/5 bg-black/20">
+            <button onclick="sendQuickMessage('Brawl Stars')" class="text-[9px] bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white px-2.5 py-1 rounded-md transition-all border border-white/5">Brawl Stars</button>
+            <button onclick="sendQuickMessage('Clash Royale')" class="text-[9px] bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white px-2.5 py-1 rounded-md transition-all border border-white/5">Clash Royale</button>
+            <button onclick="sendQuickMessage('Цены')" class="text-[9px] bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white px-2.5 py-1 rounded-md transition-all border border-white/5">Цены подписок</button>
+            <button onclick="sendQuickMessage('Безопасность')" class="text-[9px] bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white px-2.5 py-1 rounded-md transition-all border border-white/5">Безопасность</button>
         </div>
 
-        <div class="flex gap-2 border-t border-white/5 pt-3">
-            <input type="text" id="chat-input" placeholder="Задайте умный вопрос..." class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[11px] focus:outline-none focus:border-white/30 text-white transition-all">
-            <button onclick="handleSendMessage()" class="w-11 h-11 bg-white text-black rounded-xl flex items-center justify-center hover:bg-gray-200 transition-all">
-                <i class="fas fa-paper-plane text-xs"></i>
-            </button>
+        <div class="p-4 bg-black/40 border-t border-white/5">
+            <div class="flex gap-2">
+                <input type="text" id="chat-user-input" placeholder="Введите ваш запрос..." class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[11px] focus:outline-none focus:border-white/30 text-white transition-all">
+                <button onclick="handleUserMessageSubmit()" class="w-11 h-11 bg-white text-black rounded-xl flex items-center justify-center hover:bg-gray-200 transition-all">
+                    <i class="fas fa-paper-plane text-xs"></i>
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Инициализация фоновых частиц матрицы
+        // Фоновые частицы матрицы
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 50, "density": { "enable": true, "value_area": 900 } },
+                "number": { "value": 45, "density": { "enable": true, "value_area": 1000 } },
                 "color": { "value": "#ffffff" },
-                "opacity": { "value": 0.08, "random": true },
+                "opacity": { "value": 0.06, "random": true },
                 "size": { "value": 1.5, "random": true },
-                "line_linked": { "enable": true, "distance": 160, "color": "#ffffff", "opacity": 0.03, "width": 1 },
-                "move": { "enable": true, "speed": 0.5, "direction": "none", "out_mode": "out" }
+                "line_linked": { "enable": true, "distance": 180, "color": "#ffffff", "opacity": 0.02, "width": 1 },
+                "move": { "enable": true, "speed": 0.4 }
             }
         });
 
-        // Высокоточный движок анимации скролла (Intersection Observer)
-        const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                    observer.unobserve(entry.target); // Оставляем активным, не ломая верстку
+        // Анимация блоков при скролле (Reveal Engine)
+        function executeScrollReveal() {
+            const elements = document.querySelectorAll(".reveal");
+            elements.forEach(item => {
+                const screenTrigger = window.innerHeight - 80;
+                const elementTopPosition = item.getBoundingClientRect().top;
+                if (elementTopPosition < screenTrigger) {
+                    item.classList.add("active");
                 }
             });
-        }, revealOptions);
+        }
+        window.addEventListener("scroll", executeScrollReveal);
+        executeScrollReveal();
 
-        document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
-
-        // Имитация живых серверных логов для верхней панели
-        const serverLogs = [
-            "Пользователь @a***x успешно активировал пакет Premium [Brawl Stars]",
-            "Сигнатуры ядра обновлены. Хеш защиты полностью изменен для обхода проверок",
-            "Пользователь @k***l приобрёл безлимитную лицензию [Clash of Clans]",
-            "Маршрутизация серверов оптимизирована. Средний пинг авторизации: 14ms",
-            "Пользователь @s***m обновил конфигурацию оверлея через @Eynec_bot"
+        // Скрипт живой новостной ленты
+        const tickerLogs = [
+            "Пользователь @m***1 успешно активировал Gladiator Access [Brawl Stars]",
+            "Система ядра: Лог-анализатор успешно обновил базу сигнатур античита",
+            "Пользователь @d***k приобрёл Lifetime лицензию [Clash of Clans]",
+            "Служба поддержки: Пинг серверов синхронизации оптимизирован (-12ms)",
+            "Пользователь @x***z разблокировал тариф Immortal Access через @Eynec_bot"
         ];
         setInterval(() => {
-            const ticker = document.getElementById("live-ticker-text");
-            ticker.style.opacity = 0;
+            const tickerElement = document.getElementById("live-ticker-text");
+            tickerElement.style.opacity = 0;
             setTimeout(() => {
-                const randomLog = serverLogs[Math.floor(Math.random() * serverLogs.length)];
-                ticker.innerText = randomLog;
-                ticker.style.opacity = 1;
+                const randomLogIndex = Math.floor(Math.random() * tickerLogs.length);
+                tickerElement.innerText = tickerLogs[randomLogIndex];
+                tickerElement.style.opacity = 1;
             }, 500);
-        }, 6000);
+        }, 5000);
 
-        // ЛОГИКА ИИ-ТЕРМИНАЛА
-        const chatWindow = document.getElementById('ai-chat');
-        const chatInput = document.getElementById('chat-input');
-        const messagesContainer = document.getElementById('chat-messages');
+        // УПРАВЛЕНИЕ ИИ-ТЕРМИНАЛОМ
+        const chatWindowBox = document.getElementById('ai-chat-window');
+        const chatInputField = document.getElementById('chat-user-input');
+        const messagesTextBox = document.getElementById('chat-messages-box');
 
         function toggleChatWindow() {
-            if (chatWindow.style.display === 'flex') {
-                chatWindow.style.display = 'none';
+            if (chatWindowBox.style.display === 'flex') {
+                chatWindowBox.style.display = 'none';
             } else {
-                chatWindow.style.display = 'flex';
-                chatInput.focus();
+                chatWindowBox.style.display = 'flex';
+                chatInputField.focus();
             }
         }
 
-        function sendQuickMessage(presetText) {
-            chatInput.value = presetText;
-            handleSendMessage();
+        function sendQuickMessage(topicText) {
+            chatInputField.value = topicText;
+            handleUserMessageSubmit();
         }
 
-        function handleSendMessage() {
-            const rawText = chatInput.value.trim();
-            if (!rawText) return;
+        function handleUserMessageSubmit() {
+            const userTextQuery = chatInputField.value.trim();
+            if (!userTextQuery) return;
 
-            // Отображение сообщения пользователя в чате
-            messagesContainer.innerHTML += `
+            // Отрисовка сообщения пользователя
+            messagesTextBox.innerHTML += `
                 <div class="text-right">
-                    <div class="inline-block bg-white/10 p-3 rounded-2xl rounded-tr-none text-[11px] border border-white/5 max-w-[85%] text-left text-gray-200">
-                        ${rawText}
+                    <div class="inline-block bg-white/10 p-3.5 rounded-2xl rounded-tr-none text-[11px] border border-white/5 max-w-[85%] text-left text-gray-200">
+                        ${userTextQuery}
                     </div>
                 </div>`;
             
-            chatInput.value = '';
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            chatInputField.value = '';
+            messagesTextBox.scrollTop = messagesTextBox.scrollHeight;
 
-            // Генерация уникального идентификатора для лоадера
-            const typingId = 'loader-' + Date.now();
+            // Генерация уникального ID для индикатора печати
+            const typingIndicatorId = 'typing-' + Date.now();
 
-            // Создание анимированного индикатора печати ИИ
-            messagesContainer.innerHTML += `
-                <div class="text-left" id="${typingId}">
-                    <div class="inline-block bg-white/5 p-3 px-4 rounded-2xl rounded-tl-none border border-white/5 flex items-center gap-1 w-16 justify-center">
+            // Создание и добавление анимированного индикатора "ИИ печатает..."
+            messagesTextBox.innerHTML += `
+                <div class="text-left" id="${typingIndicatorId}">
+                    <div class="inline-block bg-white/5 p-3 px-4 rounded-2xl rounded-tl-none text-[11px] text-gray-500 border border-white/5 flex items-center gap-1 w-16 justify-center">
                         <span class="w-1.5 h-1.5 bg-gray-500 rounded-full typing-dot"></span>
                         <span class="w-1.5 h-1.5 bg-gray-500 rounded-full typing-dot"></span>
                         <span class="w-1.5 h-1.5 bg-gray-500 rounded-full typing-dot"></span>
                     </div>
                 </div>`;
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            messagesTextBox.scrollTop = messagesTextBox.scrollHeight;
 
-            // Интеллектуальный парсинг контекста запроса с задержкой (симуляция мышления)
+            // Ответ ИИ с задержкой для реалистичности
             setTimeout(() => {
-                const loaderNode = document.getElementById(typingId);
-                if (loaderNode) loaderNode.remove();
+                // Удаляем индикатор загрузки
+                const indicatorNode = document.getElementById(typingIndicatorId);
+                if (indicatorNode) indicatorNode.remove();
 
-                let aiResponse = "Моя архитектура обучена разбирать только внутренние спецификации фреймворка Eynec под Brawl Stars, Clash Royale и Clash of Clans. Сформулируй детальнее.";
-                const lowerText = rawText.toLowerCase();
+                let finalizedAiText = "Мой нейронный модуль обрабатывает данные только по продуктам Eynec для Brawl Stars, Clash Royale и Clash of Clans. Уточните ваш поисковый параметр.";
+                const cleanInput = userTextQuery.toLowerCase();
 
-                if (lowerText.includes('бравл') || lowerText.includes('brawl') || lowerText.includes('bs')) {
-                    aiResponse = "Архитектура **Eynec для Brawl Stars** использует хуки графического конвейера устройства. Это обеспечивает работу функций Predictive Aimbot и Vector Auto-Dodge без задержек ввода. Обход античита выполняется изолированно на уровне ядра.";
-                } else if (lowerText.includes('рояль') || lowerText.includes('royale') || lowerText.includes('cr')) {
-                    aiResponse = "Инструментарий под **Clash Royale** разворачивает сетевой анализатор Vision Core. Он дешифрует пакеты матча, выводя на экран текущую руку карт соперника и его точный баланс эликсира. Алгоритм AI Deployment помогает оптимально высаживать юнитов.";
-                } else if (lowerText.includes('клаш') || lowerText.includes('clans') || lowerText.includes('кок') || lowerText.includes('coc')) {
-                    aiResponse = "Пакет **Clash of Clans** включает автоматизированный макрос Auto-Farm для непрерывного сбора ресурсов 24/7. Встроенный эмулятор действий полностью имитирует поведение человека. Модуль Trap Revealer подсвечивает все скрытые ловушки и теслы.";
-                } else if (lowerText.includes('цена') || lowerText.includes('купить') || lowerText.includes('stars') || lowerText.includes('стоит')) {
-                    aiResponse = "Все транзакции проводятся через официальный автоматический шлюз **@Eynec_bot** с использованием Telegram Stars. Стоимость модулей: Brawl Stars — от 250★, Clash Royale — от 300★, Clash of Clans — от 400★. Доступны варианты на 1, 3 месяца и пожизненные лицензии.";
-                } else if (lowerText.includes('безопасн') || lowerText.includes('бан') || lowerText.includes('детект') || lowerText.includes('чит')) {
-                    aiResponse = "Продукты Eynec функционируют на базе технологии Kernel level bypass (интеграция вне области видимости юзермод-античитов). Сигнатуры регулярно и автоматически обновляются. На текущий момент 2026 года все системы имеют статус **Undetected**.";
+                if (cleanInput.includes('бравл') || cleanInput.includes('brawl') || cleanInput.includes('bs')) {
+                    finalizedAiText = "Конфигурация **Eynec для Brawl Stars** укомплектована Predictive Aimbot (упреждение движения), Vector Auto-Dodge (уклонение от снарядов) и Quantum Bush ESP. Интеграция происходит внутри ядра системы, обходя проверки памяти.";
+                } else if (cleanInput.includes('рояль') || cleanInput.includes('royale') || cleanInput.includes('cr')) {
+                    finalizedAiText = "Архитектура под **Clash Royale** включает в себя оверлей Vision Core, отображающий руку карт противника и его текущий эликсир. Дополнительный скрипт AI Placement рассчитывает плитки для идеального отвлечения танков.";
+                } else if (cleanInput.includes('клаш') || cleanInput.includes('clans') || cleanInput.includes('кок') || cleanInput.includes('coc')) {
+                    finalizedAiText = "Для **Clash of Clans** активна экосистема автономного гринда Auto-Farm (автоматический сбор ресурсов 24/7), Trap & Tesla Revealer (видимость скрытых бомб) и Sandbox-симулятор для безопасной тренировки атак в КВ.";
+                } else if (cleanInput.includes('цена') || cleanInput.includes('купить') || cleanInput.includes('стоит') || cleanInput.includes('stars')) {
+                    finalizedAiText = "Ценообразование привязано к внутренним Stars Telegram: Brawl Stars от 250★, Clash Royale от 300★, CoC от 400★. Для проведения моментальной безопасной транзакции используйте наш официальный шлюз: **@Eynec_bot**.";
+                } else if (cleanInput.includes('безопасн') || cleanInput.includes('бан') || cleanInput.includes('детект')) {
+                    finalizedAiText = "Продукты Eynec используют технологию Kernel level bypass. Мы перехватываем графические вызовы до того, как игра успеет проверить стек памяти. На текущий момент 2026 года софт имеет статус **Undetected**.";
                 }
 
-                // Вывод финального ответа ИИ с кастомным оформлением терминала
-                messagesContainer.innerHTML += `
+                // Рендерим полноценный ответ
+                messagesTextBox.innerHTML += `
                     <div class="text-left">
                         <div class="inline-block bg-white/[0.02] p-4 rounded-2xl rounded-tl-none text-[11px] text-gray-400 border border-white/5 leading-relaxed max-w-[85%]">
                             <span class="text-white font-bold block mb-1 text-[9px] uppercase tracking-wider">AI Terminal:</span>
-                            ${aiResponse}
+                            ${finalizedAiText}
                         </div>
                     </div>`;
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }, 1100); 
+                messagesTextBox.scrollTop = messagesTextBox.scrollHeight;
+            }, 1200); // Задержка в 1.2 секунды для симуляции мышления
         }
 
-        // Обработчик отправки по нажатию клавиши Enter
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSendMessage();
+        // Подключение отслеживания кнопки Enter
+        chatInputField.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') handleUserMessageSubmit();
         });
     </script>
 </body>
