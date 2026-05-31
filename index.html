@@ -3,525 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eynec AI Hub</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Eynec Ultimate Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     
     <style>
+        /* ==========================================
+           ЦВЕТОВЫЕ СЕКЦИИ И ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
+           ========================================== */
         :root {
-            --bg-color: #0b0c10;
-            --container-bg: rgba(22, 26, 35, 0.65);
-            --border-color: rgba(0, 255, 136, 0.2);
-            --accent-color: #00ff88;
-            --accent-glow: rgba(0, 255, 136, 0.4);
-            --text-main: #f5f6fa;
-            --text-muted: #8b9bb4;
-            --user-bubble: #1f2430;
-            --ai-bubble: rgba(0, 255, 136, 0.07);
+            --bg-deep: #050508;
+            /* Секция 1: Шапка (Синий неон) */
+            --header-bg: rgba(10, 20, 40, 0.8);
+            --header-accent: #00d4ff;
+            /* Секция 2: Чат (Зеленый неон) */
+            --chat-bg: rgba(10, 25, 15, 0.6);
+            --chat-accent: #00ff88;
+            /* Секция 3: Кнопки (Золотой/Оранжевый) */
+            --btn-accent: #ffcc00;
+            --btn-bg: rgba(40, 35, 10, 0.5);
+            /* Секция 4: Ввод (Фиолетовый) */
+            --input-bg: rgba(30, 10, 40, 0.7);
+            --input-accent: #cc00ff;
+            
+            --text-main: #e0e6ed;
+            --font-main: 'Exo 2', sans-serif;
+            --font-logo: 'Orbitron', sans-serif;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body, html {
-            width: 100%;
-            height: 100%;
-            background-color: var(--bg-color);
+        body {
+            background-color: var(--bg-deep);
             color: var(--text-main);
+            font-family: var(--font-main);
+            height: 100vh;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Контейнер для частиц на заднем плане */
         #particles-js {
             position: absolute;
             width: 100%;
             height: 100%;
-            top: 0;
-            left: 0;
             z-index: 1;
         }
 
-        /* Главное окно чата */
-        .chat-container {
+        /* ГЛАВНЫЙ КОНТЕЙНЕР */
+        .main-wrapper {
             position: relative;
-            z-index: 2;
-            width: 90%;
-            max-width: 850px;
-            height: 85vh;
-            background: var(--container-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 136, 0.05);
+            z-index: 10;
+            width: 95%;
+            max-width: 1000px;
+            height: 90vh;
             display: flex;
             flex-direction: column;
+            border-radius: 30px;
             overflow: hidden;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Шапка сайта */
-        .chat-header {
-            padding: 24px;
-            border-bottom: 1px solid var(--border-color);
+        /* --- СЕКЦИЯ 1: HEADER (BLUE) --- */
+        .header {
+            background: var(--header-bg);
+            padding: 25px 40px;
+            border-bottom: 2px solid var(--header-accent);
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            background: rgba(11, 12, 16, 0.4);
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
         }
 
-        .brand-info {
+        .logo {
+            font-family: var(--font-logo);
+            font-size: 2rem;
+            color: var(--header-accent);
+            text-shadow: 0 0 15px var(--header-accent);
+            letter-spacing: 4px;
+        }
+
+        .system-status {
             display: flex;
             align-items: center;
-            gap: 14px;
-        }
-
-        .avatar-status {
-            position: relative;
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #00ff88, #00bfff);
-            border-radius: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 800;
-            color: #0b0c10;
-            font-size: 1.2rem;
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .status-dot {
-            position: absolute;
-            bottom: -3px;
-            right: -3px;
-            width: 12px;
-            height: 12px;
-            background-color: #00ff88;
-            border: 2px solid var(--bg-color);
-            border-radius: 50%;
-            box-shadow: 0 0 8px #00ff88;
-        }
-
-        .brand-text h1 {
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        .brand-text p {
-            font-size: 0.85rem;
-            color: var(--accent-color);
+            gap: 10px;
+            color: var(--header-accent);
             font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
         }
 
-        /* Область сообщений */
-        .chat-messages {
+        .blink-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--header-accent);
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        /* --- СЕКЦИЯ 2: CHAT AREA (GREEN) --- */
+        .chat-viewport {
             flex: 1;
-            padding: 24px;
+            background: var(--chat-bg);
+            padding: 30px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--chat-accent) transparent;
         }
 
-        /* Кастомный скроллбар */
-        .chat-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-        .chat-messages::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-        .chat-messages::-webkit-scrollbar-thumb:hover {
-            background: var(--border-color);
+        .chat-viewport::-webkit-scrollbar { width: 6px; }
+        .chat-viewport::-webkit-scrollbar-thumb { background: var(--chat-accent); border-radius: 10px; }
+
+        .msg {
+            max-width: 75%;
+            padding: 18px 25px;
+            border-radius: 20px;
+            font-size: 1rem;
+            line-height: 1.6;
+            position: relative;
+            animation: slideIn 0.4s ease;
         }
 
-        /* Стили пузырей сообщений */
-        .message {
-            max-width: 80%;
-            padding: 16px 20px;
-            border-radius: 18px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            animation: fadeIn 0.3s ease-out forwards;
+        .msg.ai {
+            align-self: flex-start;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--chat-accent);
+            color: #fff;
+            border-bottom-left-radius: 2px;
+            box-shadow: inset 0 0 15px rgba(0, 255, 136, 0.1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .message.user {
-            background-color: var(--user-bubble);
+        .msg.user {
             align-self: flex-end;
-            border-bottom-right-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #1a1d24;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom-right-radius: 2px;
         }
 
-        .message.ai {
-            background-color: var(--ai-bubble);
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.02);
-        }
-
-        .message.ai strong {
-            color: var(--accent-color);
-        }
-
-        /* Панель быстрых вопросов */
-        .quick-questions-panel {
-            padding: 0 24px 12px 24px;
+        /* --- СЕКЦИЯ 3: QUICK ACTIONS (GOLD) --- */
+        .quick-actions {
+            background: var(--btn-bg);
+            padding: 15px 30px;
             display: flex;
-            gap: 10px;
+            gap: 15px;
             flex-wrap: wrap;
+            border-top: 1px solid rgba(255, 204, 0, 0.2);
         }
 
-        .quick-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-muted);
-            padding: 10px 16px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .quick-btn:hover {
-            border-color: var(--accent-color);
-            color: var(--text-main);
-            background: rgba(0, 255, 136, 0.05);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(0, 255, 136, 0.05);
-        }
-
-        /* Поле ввода и кнопка */
-        .chat-input-area {
-            padding: 20px 24px 24px 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(11, 12, 16, 0.2);
-        }
-
-        .input-wrapper {
-            display: flex;
-            gap: 12px;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 6px 6px 6px 18px;
-            border-radius: 16px;
-            align-items: center;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .input-wrapper:focus-within {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.1);
-        }
-
-        .chat-input {
-            flex: 1;
+        .q-btn {
             background: transparent;
-            border: none;
-            outline: none;
-            color: var(--text-main);
-            font-size: 0.95rem;
-            padding: 10px 0;
-        }
-
-        .chat-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .send-button {
-            background: var(--accent-color);
-            border: none;
-            outline: none;
-            color: #0b0c10;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 0.9rem;
+            border: 1px solid var(--btn-accent);
+            color: var(--btn-accent);
+            padding: 8px 18px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px var(--accent-glow);
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
         }
 
-        .send-button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.6);
+        .q-btn:hover {
+            background: var(--btn-accent);
+            color: #000;
+            box-shadow: 0 0 20px var(--btn-accent);
         }
 
-        .send-button:active {
-            transform: scale(0.98);
-        }
-
-        /* Индикатор того, что ИИ пишет */
-        .typing-indicator {
+        /* --- СЕКЦИЯ 4: INPUT (PURPLE) --- */
+        .input-zone {
+            background: var(--input-bg);
+            padding: 25px 40px;
+            border-top: 2px solid var(--input-accent);
             display: flex;
-            align-items: center;
-            gap: 5px;
-            background: var(--ai-bubble);
-            border: 1px solid var(--border-color);
-            align-self: flex-start;
-            padding: 14px 20px;
-            border-radius: 18px;
-            border-bottom-left-radius: 4px;
+            gap: 20px;
         }
 
-        .typing-dot {
-            width: 7px;
-            height: 7px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            animation: bounce 1.4s infinite ease-in-out both;
+        .main-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--input-accent);
+            border-radius: 15px;
+            padding: 15px 25px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
         }
 
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-
-        @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1.0); }
+        .main-input:focus {
+            box-shadow: 0 0 15px var(--input-accent);
         }
+
+        .send-btn {
+            background: var(--input-accent);
+            color: #fff;
+            border: none;
+            padding: 0 35px;
+            border-radius: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .send-btn:hover {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--input-accent);
+        }
+
+        /* АНИМАЦИИ */
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .typing { display: flex; gap: 5px; padding: 10px; }
+        .dot { width: 8px; height: 8px; background: var(--chat-accent); border-radius: 50%; animation: bounce 1.4s infinite; }
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
     </style>
 </head>
 <body>
 
     <div id="particles-js"></div>
 
-    <div class="chat-container">
-        
-        <div class="chat-header">
-            <div class="brand-info">
-                <div class="avatar-status">
-                    E
-                    <div class="status-dot"></div>
-                </div>
-                <div class="brand-text">
-                    <h1>Eynec Assistant</h1>
-                    <p>SYSTEM // ONLINE</p>
-                </div>
+    <div class="main-wrapper">
+        <!-- Шапка -->
+        <header class="header">
+            <div class="logo">EYNEC</div>
+            <div class="system-status">
+                <div class="blink-dot"></div>
+                <span>CORE_V2.5_ACTIVE</span>
+            </div>
+        </header>
+
+        <!-- Чат -->
+        <div class="chat-viewport" id="chat-box">
+            <div class="msg ai">
+                Система инициализирована. Я — ИИ проекта <b>Eynec</b>. <br>
+                Мои модули обновлены. Я знаю всё о <b>Standoff 2, Brawl Stars</b>, наших ценах и функциях обхода бана. Жду твоего запроса.
             </div>
         </div>
 
-        <div class="chat-messages" id="chat-box">
-            <div class="message ai">
-                Привет! Я обновленный ИИ проекта <strong>Eynec</strong>. Теперь я отлично ориентируюсь в нашей базе знаний. Можешь спросить меня про наши читы, цены на подписки или функции!
-            </div>
+        <!-- Кнопки -->
+        <div class="quick-actions">
+            <button class="q-btn" onclick="ask('Цены на подписки')">💰 ТАРИФЫ</button>
+            <button class="q-btn" onclick="ask('Функции софта')">⚙️ ФУНКЦИОНАЛ</button>
+            <button class="q-btn" onclick="ask('Читы на Standoff 2')">🔫 STANDOFF 2</button>
+            <button class="q-btn" onclick="ask('Моды на Brawl Stars')">🌵 BRAWL STARS</button>
+            <button class="q-btn" onclick="ask('Как не получить бан')">🛡️ ЗАЩИТА</button>
         </div>
 
-        <div class="quick-questions-panel">
-            <button class="quick-btn" onclick="sendQuickQuestion('Цены на подписки')">💰 Цены подписок</button>
-            <button class="quick-btn" onclick="sendQuickQuestion('Функции софта')">⚙️ Функции и фишки</button>
-            <button class="quick-btn" onclick="sendQuickQuestion('Читы на Standoff 2')">🔫 Standoff 2 софт</button>
-            <button class="quick-btn" onclick="sendQuickQuestion('Моды на Brawl Stars')">🌟 Brawl Stars мод</button>
+        <!-- Ввод -->
+        <div class="input-zone">
+            <input type="text" id="user-input" class="main-input" placeholder="Введите команду или вопрос..." autocomplete="off">
+            <button id="send-btn" class="send-btn">EXECUTE</button>
         </div>
-
-        <div class="chat-input-area">
-            <div class="input-wrapper">
-                <input type="text" id="user-input" class="chat-input" placeholder="Задай гениальный вопрос..." autocomplete="off">
-                <button id="send-btn" class="send-button">Отправить</button>
-            </div>
-        </div>
-
     </div>
 
+    <!-- СКРИПТЫ -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
 
     <script>
-        /* ==========================================
-           1. НАСТРОЙКА АНИМАЦИИ ЧАСТИЦ (PARTICLES)
-           ========================================== */
+        /* 1. ПАРТИКЛЫ (УВЕЛИЧЕНО КОЛИЧЕСТВО) */
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 75, "density": { "enable": true, "value_area": 900 } },
-                "color": { "value": "#00ff88" },
+                "number": { "value": 150, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#00d4ff", "#00ff88", "#cc00ff"] },
                 "shape": { "type": "circle" },
-                "opacity": { 
-                    "value": 0.25, 
-                    "random": true,
-                    "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } 
-                },
-                "size": { "value": 3, "random": true },
-                "line_linked": { 
-                    "enable": true, 
-                    "distance": 140, 
-                    "color": "#00ff88", 
-                    "opacity": 0.15, 
-                    "width": 1 
-                },
-                "move": { 
-                    "enable": true, 
-                    "speed": 1.5, 
-                    "direction": "none", 
-                    "random": true, 
-                    "straight": false, 
-                    "out_mode": "out", 
-                    "bounce": false 
-                }
+                "opacity": { "value": 0.4 },
+                "size": { "value": 2, "random": true },
+                "line_linked": { "enable": true, "distance": 120, "color": "#ffffff", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 2, "random": true }
             },
             "interactivity": {
-                "detect_on": "canvas",
-                "events": { 
-                    "onhover": { "enable": true, "mode": "grab" }, 
-                    "onclick": { "enable": true, "mode": "push" }, 
-                    "resize": true 
-                },
-                "modes": {
-                    "grab": { "distance": 160, "line_linked": { "opacity": 0.4 } }
-                }
-            },
-            "retina_detect": true
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } }
+            }
         });
 
-        /* ==========================================
-           2. БАЗА ЗНАНИЙ ИИ ДЛЯ ПРОЕКТА EYNEC
-           ========================================== */
-        const knowledgeBase = [
+        /* 2. БАЗА ДАННЫХ (ЦЕНЫ, ИГРЫ, ФУНКЦИИ) */
+        const eynecData = [
             {
-                title: "Цены на подписки Eynec",
-                tags: ["цена", "стоимость", "купить", "подписка", "прайс", "деньги", "сколько стоит", "тариф", "цены подписок"],
-                description: "На данный момент в проекте Eynec действуют следующие тарифы:\n• <b>Недельный доступ</b> — 500₸\n• <b>Месячный доступ</b> — 1500₸\n• <b>Навсегда (Lifetime)</b> — 5000₸\n\nОплатить можно напрямую через Kaspi, а также популярными криптовалютами."
+                title: "Прайс-лист подписок",
+                tags: ["цена", "стоимость", "купить", "подписка", "деньги", "тарифы", "прайс"],
+                content: "Актуальные цены Eynec:<br>• <b>7 дней</b> — 500₸<br>• <b>30 дней</b> — 1500₸<br>• <b>Навсегда</b> — 5000₸<br>Оплата: Kaspi, Crypto."
             },
             {
-                title: "Функции и возможности софта",
-                tags: ["функции", "возможности", "что умеет", "фишки", "функционал", "преимущества", "функции софта"],
-                description: "Наш приватный софт предлагает премиальный функционал:\n• <b>Cloud Skinchanger</b> — моментальная визуальная замена любых скинов.\n• <b>By-pass Anti-Cheat</b> — мощный обход встроенных игровых систем защиты.\n• <b>Log Cleaner</b> — автоматическое затирание игровых логов после матча.\n• Стабильный запуск без обязательного наличия Root-прав."
+                title: "Функционал системы",
+                tags: ["функции", "возможности", "что умеет", "фишки", "функционал"],
+                content: "Eynec Core включает:<br>1. <b>Cloud Skinchanger</b> (все скины/ножи).<br>2. <b>Bypass Engine</b> (обход античита).<br>3. <b>Log Cleaner</b> (удаление следов).<br>4. Работа без Root."
             },
             {
-                title: "Standoff 2: Скинчейнджер и Скрипты",
-                tags: ["читы на standoff 2", "стендофф", "standoff", "стандоф", "ст2", "скины", "скинчейнджер", "ножи", "скрипт", "чит"],
-                description: "Для <b>Standoff 2 (v 0.28.0+)</b> доступен топовый скинчейнджер. Он подменяет ID скинов прямо в оперативной памяти. Поддерживает установку любых редких ножей, перчаток и кастомных анимаций. Рекомендуется использовать на твинк-аккаунтах для полной безопасности."
+                title: "Модуль Standoff 2",
+                tags: ["стендофф", "standoff", "скины", "ножи", "скрипт", "ст2"],
+                content: "Для Standoff 2 доступен скинчейнджер v0.28.0+. Визуальная подмена скинов, перчаток и ножей. Скрипт оптимизирован под слабые устройства."
             },
             {
-                title: "Brawl Stars: Приватки и Мод Меню",
-                tags: ["моды на brawl stars", "бравл", "brawl", "stars", "бс", "bs", "мод", "приватка", "гемы", "персонажи"],
-                description: "Для <b>Brawl Stars</b> мы предлагаем доступ к приватным серверам со всеми открытыми бравлерами и бесконечной валютой. Для оригинальной версии игры встроены крутые визуальные моды (изменение текстур карт и кастомные скины, не детектившиеся античитом)."
+                title: "Модуль Brawl Stars",
+                tags: ["бравл", "brawl", "бс", "мод", "приватка"],
+                content: "В Brawl Stars доступен доступ к приватным серверам и визуальные моды на скины в оригинале. Все бойцы открыты сразу."
             },
             {
-                title: "Clash Royale: Взлом и Золото",
-                tags: ["клеш", "clash", "royale", "рояль", "золото", "карты", "гемы"],
-                description: "В <b>Clash Royale</b> взломать официальные сервера на гемы технически невозможно, но у нас есть доступ к рабочей приватке. Там сразу открыты абсолютно все карты, доступны бесконечные сундуки и золото для идеального тестирования любых колод."
-            },
-            {
-                title: "Обход бана и безопасность",
-                tags: ["бан", "обход", "античит", "защита", "твинк", "логи", "очистка"],
-                description: "Чтобы минимизировать риски: всегда используйте софт на дополнительных (твинк) аккаунтах. Наш встроенный скрипт очистки логов автоматически стирает историю вашей игровой сессии перед выходом из игры, сводя вероятность бана к нулю."
+                title: "Безопасность и Бан",
+                tags: ["бан", "обход", "защита", "твинк", "безопасность"],
+                content: "Чтобы избежать детекта: используйте софт только на вторых аккаунтах (твинках) и не забывайте прожимать 'Clear Logs' в меню Eynec перед выходом."
             }
         ];
 
-        /* ==========================================
-           3. НАСТРОЙКА УМНОГО ПОИСКА FUSE.JS
-           ========================================== */
-        const fuseOptions = {
-            keys: ['tags', 'title', 'description'], // поля для поиска
-            threshold: 0.4, // гибкость к опечаткам (0.4 — золотая середина)
-            distance: 100
-        };
+        /* 3. ЛОГИКА ИИ */
+        const fuse = new Fuse(eynecData, { keys: ['tags', 'title'], threshold: 0.3 });
+        const box = document.getElementById('chat-box');
+        const input = document.getElementById('user-input');
 
-        const fuse = new Fuse(knowledgeBase, fuseOptions);
-
-        /* ==========================================
-           4. ЛОГИКА ВЗАИМОДЕЙСТВИЯ ЧАТА
-           ========================================== */
-        const chatBox = document.getElementById('chat-box');
-        const userInput = document.getElementById('user-input');
-        const sendBtn = document.getElementById('send-btn');
-
-        // Функция обработки ответов ИИ
-        function generateAiResponse(query) {
-            if (!query.trim()) return "Ты ничего не написал...";
-
-            const searchResults = fuse.search(query);
-
-            if (searchResults.length > 0) {
-                const bestMatch = searchResults[0].item;
-                return `🤖 <b>[Eynec AI] // ${bestMatch.title}:</b>\n\n${bestMatch.description}`;
-            } else {
-                const fallbacks = [
-                    "Хмм, по этому вопросу в базе данных Eynec информации пока нет. Попробуй нажать на кнопки быстрых вопросов ниже!",
-                    "Я не совсем понял твой запрос. Напиши ключевое слово, например: 'цены', 'функции', 'standoff' или 'бравл'.",
-                    "Такой софт или команда еще не занесены в систему. Проверь правильность написания или уточни вопрос."
-                ];
-                return fallbacks[Math.floor(Math.random() * fallbacks.length)];
-            }
+        function addMessage(type, text) {
+            const div = document.createElement('div');
+            div.className = `msg ${type}`;
+            div.innerHTML = text;
+            box.appendChild(div);
+            box.scrollTop = box.scrollHeight;
         }
 
-        // Функция добавления сообщений в окно чата
-        function appendMessage(sender, text) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', sender);
-            messageDiv.innerHTML = text.replace(/\n/g, '<br>'); // сохраняем переносы строк
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight; // автопрокрутка вниз
-        }
+        function process(query) {
+            if (!query) return;
+            addMessage('user', query);
 
-        // Основной процесс отправки сообщения пользователем
-        function processUserMessage(text) {
-            appendMessage('user', text);
+            // Индикатор печати
+            const t = document.createElement('div');
+            t.className = 'msg ai typing';
+            t.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+            box.appendChild(t);
+            box.scrollTop = box.scrollHeight;
 
-            // Создаем индикатор "ИИ думает..."
-            const typingIndicator = document.createElement('div');
-            typingIndicator.classList.add('typing-indicator');
-            typingIndicator.id = 'typing-indicator';
-            typingIndicator.innerHTML = `
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-            `;
-            chatBox.appendChild(typingIndicator);
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            // Имитируем небольшую задержку (0.7 секунды) для реализма
             setTimeout(() => {
-                const indicator = document.getElementById('typing-indicator');
-                if (indicator) indicator.remove(); // Удаляем индикатор загрузки
-
-                const aiAnswer = generateAiResponse(text);
-                appendMessage('ai', aiAnswer);
-            }, 700);
-        }
-
-        // Клик по кнопке отправки
-        sendBtn.addEventListener('click', () => {
-            const text = userInput.value.trim();
-            if (text) {
-                processUserMessage(text);
-                userInput.value = ''; // Очищаем поле ввода
-            }
-        });
-
-        // Отправка по нажатию Enter
-        userInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const text = userInput.value.trim();
-                if (text) {
-                    processUserMessage(text);
-                    userInput.value = '';
+                t.remove();
+                const res = fuse.search(query);
+                if (res.length > 0) {
+                    const item = res[0].item;
+                    addMessage('ai', `<b>${item.title}:</b><br>${item.content}`);
+                } else {
+                    addMessage('ai', "Запрос не распознан. Попробуйте ключевые слова: <b>цены, функции, Standoff, Brawl.</b>");
                 }
-            }
-        });
-
-        // Функция для работы панели быстрых вопросов
-        function sendQuickQuestion(questionText) {
-            processUserMessage(questionText);
+            }, 800);
         }
+
+        document.getElementById('send-btn').onclick = () => { process(input.value); input.value = ''; };
+        input.onkeydown = (e) => { if (e.key === 'Enter') { process(input.value); input.value = ''; } };
+        function ask(txt) { process(txt); }
     </script>
 </body>
 </html>
