@@ -3,74 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EYNEC — Ultimate Gaming Hub</title>
+    <title>Eynec — Ultimate Cyber Systems Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;500;600;700;900&display=swap');
 
         :root {
-            --bg-black: #0A0A0A;
-            --bs-red: #ff4d4d;
-            --cr-gold: #d4af37;
-            --coc-green: #2ecc71;
+            --bg-black: #050505;
+            --bs-red: #ff3333;
+            --cr-gold: #f39c12;
+            --coc-green: #27ae60;
         }
 
         body {
             background-color: var(--bg-black);
-            color: #ffffff;
+            color: #f3f4f6;
             font-family: 'Inter', sans-serif;
+            font-weight: 300;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            font-size: 1.2rem; /* Увеличен базовый шрифт */
         }
 
-        h1, h2, .logo { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
 
-        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
+        h1, h2, h3, .font-sync { 
+            font-family: 'Syncopate', sans-serif; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+        }
 
-        .glass {
+        #particles-js { 
+            position: fixed; 
+            width: 100%; 
+            height: 100%; 
+            z-index: -1; 
+        }
+
+        .glass-premium {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-premium:hover {
             background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border-color: rgba(255, 255, 255, 0.08);
         }
 
-        .reveal { opacity: 0; transform: translateY(60px); transition: 1.2s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: 1s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
 
-        /* Огромные заголовки */
-        .hero-title { font-size: clamp(4rem, 15vw, 15rem); line-height: 0.8; font-weight: 900; }
-        .section-title { font-size: clamp(3rem, 8vw, 8rem); line-height: 1; margin-bottom: 4rem; }
+        .glow-red:hover { box-shadow: 0 0 40px rgba(255, 51, 51, 0.15); border-color: var(--bs-red); }
+        .glow-gold:hover { box-shadow: 0 0 40px rgba(243, 156, 18, 0.15); border-color: var(--cr-gold); }
+        .glow-green:hover { box-shadow: 0 0 40px rgba(39, 174, 96, 0.15); border-color: var(--coc-green); }
 
-        .game-card { min-height: 450px; display: flex; flex-direction: column; justify-content: space-between; }
-        
-        /* Исправленный Чат */
-        #ai-chat {
+        #ai-chat-window {
             position: fixed;
-            bottom: 120px;
+            bottom: 100px;
             right: 30px;
-            width: 450px;
-            height: 650px;
+            width: 400px;
+            height: 580px;
             z-index: 9999;
-            display: none; /* Переключается скриптом */
+            display: none;
             flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(10, 10, 10, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            overflow: hidden;
         }
 
-        .chat-messages { flex: 1; overflow-y: auto; padding: 20px; }
-        .chat-messages::-webkit-scrollbar { width: 5px; }
-        .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+        .chat-messages-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            scrollbar-width: none;
+        }
+        .chat-messages-container::-webkit-scrollbar { display: none; }
 
-        .glow-red:hover { box-shadow: 0 0 80px rgba(255, 77, 77, 0.25); border-color: var(--bs-red); }
-        .glow-gold:hover { box-shadow: 0 0 80px rgba(212, 175, 55, 0.25); border-color: var(--cr-gold); }
-        .glow-green:hover { box-shadow: 0 0 80px rgba(46, 204, 113, 0.25); border-color: var(--coc-green); }
+        /* Анимация точек загрузки ИИ */
+        .typing-dot {
+            animation: typingBounce 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
-        @media (max-width: 768px) {
-            #ai-chat { width: 95%; right: 2.5%; bottom: 100px; height: 70vh; }
-            .hero-title { font-size: 5rem; }
+        @keyframes typingBounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
         }
     </style>
 </head>
@@ -78,221 +119,64 @@
 
     <div id="particles-js"></div>
 
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 w-full z-[1000] glass py-10 px-16 flex justify-between items-center">
-        <div class="logo text-4xl font-bold tracking-tighter">EYNEC</div>
-        <div class="hidden xl:flex space-x-16 text-xs uppercase font-black tracking-[0.4em]">
-            <a href="#bs" class="hover:text-red-500 transition-all">Brawl Stars</a>
-            <a href="#cr" class="hover:text-yellow-500 transition-all">Clash Royale</a>
-            <a href="#coc" class="hover:text-green-500 transition-all">Clash of Clans</a>
+    <nav class="fixed top-0 w-full z-[1000] glass-premium py-5 px-8 flex justify-between items-center border-b border-white/5">
+        <div class="font-sync text-lg tracking-tighter text-white">EYNEC</div>
+        <div class="hidden lg:flex space-x-10 text-[10px] font-bold tracking-[0.3em] uppercase">
+            <a href="#bs" class="hover:text-red-500 transition-colors">Brawl Stars</a>
+            <a href="#cr" class="hover:text-yellow-400 transition-colors">Clash Royale</a>
+            <a href="#coc" class="hover:text-green-400 transition-colors">Clash of Clans</a>
+            <a href="#status" class="hover:text-blue-400 transition-colors">Статус систем</a>
+            <a href="#matrix" class="hover:text-purple-400 transition-colors">Анализ</a>
         </div>
-        <a href="https://t.me/Eynec" target="_blank" class="bg-white text-black px-12 py-4 rounded-full text-xs font-black uppercase hover:scale-110 transition-all">Support</a>
+        <a href="https://t.me/Eynec" target="_blank" class="border border-white/10 text-white rounded-full px-6 py-2 text-[10px] uppercase font-semibold tracking-widest hover:bg-white hover:text-black transition-all">Support</a>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-10">
-        <h1 class="hero-title reveal active">EYNEC</h1>
-        <p class="text-gray-500 text-2xl md:text-4xl max-w-5xl mt-10 reveal active italic font-light" style="transition-delay: 0.2s;">
-            «Мы помогаем игрокам развиваться, а они помогают развиваться нам»
-        </p>
-        <div class="mt-20 reveal active" style="transition-delay: 0.4s;">
-            <a href="#bs" class="inline-block px-20 py-8 bg-transparent border-2 border-white/20 text-white font-black uppercase text-sm tracking-[0.5em] hover:bg-white hover:text-black transition-all duration-700">Explore Catalog</a>
-        </div>
-    </section>
-
-    <!-- BRAWL STARS -->
-    <section id="bs" class="py-60 px-10 border-t border-red-500/20">
-        <div class="max-w-[1700px] mx-auto">
-            <h2 class="section-title text-red-600 reveal">Brawl Stars</h2>
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-32">
-                <div class="reveal">
-                    <p class="text-gray-400 text-xl mb-16 leading-relaxed max-w-2xl">Премиальные модули для полной доминации. Стабильность, обход анти-чита и 120 FPS. Активных пользователей: 6000+</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div class="glass p-12 rounded-3xl glow-red game-card">
-                            <h4 class="text-2xl font-bold text-red-500 mb-4 uppercase">Aimbot (Smart Focus)</h4>
-                            <p class="text-gray-500 text-lg">Автоматическое наведение с предиктом 100%.</p>
-                        </div>
-                        <div class="glass p-12 rounded-3xl glow-red game-card">
-                            <h4 class="text-2xl font-bold text-red-500 mb-4 uppercase">Auto-Dodge</h4>
-                            <p class="text-gray-500 text-lg">Уклонение от снарядов в реальном времени.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 reveal">
-                    <div class="glass p-16 text-center rounded-[3rem]">
-                        <span class="text-gray-600 font-bold text-xs uppercase tracking-widest">1 Month</span>
-                        <p class="text-6xl font-black my-10 text-white">250 ★</p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-red-600 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition">Buy</button>
-                    </div>
-                    <div class="glass p-16 text-center rounded-[3rem] border-red-600 scale-110 shadow-2xl shadow-red-600/20">
-                        <span class="text-red-500 font-bold text-xs uppercase tracking-widest">3 Months</span>
-                        <p class="text-6xl font-black my-10 text-white">600 ★</p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-red-600 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition">Buy</button>
-                    </div>
-                    <div class="glass p-16 text-center rounded-[3rem]">
-                        <span class="text-gray-600 font-bold text-xs uppercase tracking-widest">Life</span>
-                        <p class="text-6xl font-black my-10 text-white">1000 ★</p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-red-600 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition">Buy</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CLASH ROYALE -->
-    <section id="cr" class="py-60 px-10 border-t border-yellow-500/20 bg-gradient-to-b from-yellow-900/5 to-transparent">
-        <div class="max-w-[1700px] mx-auto text-right">
-            <h2 class="section-title text-yellow-500 reveal">Clash Royale</h2>
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-32 mt-20 items-center">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 order-2 xl:order-1 reveal">
-                    <div class="glass p-16 text-center rounded-[3rem]">
-                        <p class="text-6xl font-black mb-10">300</p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-yellow-500 text-black rounded-2xl font-black uppercase tracking-widest">Buy Now</button>
-                    </div>
-                    <div class="glass p-16 text-center rounded-[3rem] border-yellow-500 scale-110">
-                        <p class="text-6xl font-black mb-10">600</p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-yellow-500 text-black rounded-2xl font-black uppercase tracking-widest">Buy Now</button>
-                    </div>
-                    <div class="glass p-16 text-center rounded-[3rem]">
-                        <p class="text-6xl font-black mb-10">1000</p>
-                        <button onclick="window.open('https://t.me/Eynec_bot', '_blank')" class="w-full py-6 bg-yellow-500 text-black rounded-2xl font-black uppercase tracking-widest">Buy Now</button>
-                    </div>
-                </div>
-                <div class="reveal order-1 xl:order-2 space-y-10">
-                    <div class="glass p-12 rounded-3xl glow-gold text-right border-r-8 border-r-yellow-500">
-                        <h4 class="text-3xl font-black text-yellow-500 mb-4 uppercase">Vision Core</h4>
-                        <p class="text-gray-400 text-xl italic">Видь все карты и эликсир врага мгновенно.</p>
-                    </div>
-                    <div class="glass p-12 rounded-3xl glow-gold text-right border-r-8 border-r-yellow-500">
-                        <h4 class="text-3xl font-black text-yellow-500 mb-4 uppercase">AI Deploy</h4>
-                        <p class="text-gray-400 text-xl italic">Автоматическая идеальная высадка войск.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="py-60 border-t border-white/5 text-center">
-        <h2 class="logo text-[10vw] font-bold mb-20 text-white/5">EYNEC</h2>
-        <div class="flex justify-center gap-20 text-6xl">
-            <a href="https://t.me/Eynec" target="_blank" class="hover:text-blue-400 transition-all scale-150"><i class="fab fa-telegram"></i></a>
-            <a href="https://t.me/Eynec_bot" target="_blank" class="hover:text-blue-500 transition-all scale-150"><i class="fas fa-robot"></i></a>
-        </div>
-        <p class="mt-40 text-gray-800 text-sm tracking-[1.5em] uppercase">Eynec Solutions &copy; 2026</p>
-    </footer>
-
-    <!-- AI CHAT TOGGLE -->
-    <button onclick="toggleChat()" class="fixed bottom-10 right-10 w-24 h-24 bg-white text-black rounded-full shadow-[0_0_50px_rgba(255,255,255,0.3)] flex items-center justify-center z-[10000] hover:scale-110 active:scale-95 transition-all">
-        <i class="fas fa-brain text-4xl"></i>
-    </button>
-
-    <!-- AI CHAT INTERFACE -->
-    <div id="ai-chat" class="glass rounded-[2rem] shadow-2xl flex flex-col">
-        <div class="p-8 border-b border-white/10 flex justify-between items-center">
-            <div>
-                <h3 class="text-xl font-black uppercase text-white tracking-widest">Eynec AI</h3>
-                <p class="text-xs text-green-500 font-bold uppercase mt-1 tracking-tighter">Ready to assist</p>
-            </div>
-            <button onclick="toggleChat()" class="text-white/30 hover:text-white transition"><i class="fas fa-times text-2xl"></i></button>
-        </div>
-        <div id="chat-messages" class="chat-messages space-y-8">
-            <div class="bg-white/5 p-6 rounded-3xl rounded-tl-none text-sm leading-relaxed border border-white/5">
-                Привет! Я ИИ-ассистент Eynec. Спрашивай о функциях для Brawl Stars, Clash Royale или CoC.
-            </div>
-        </div>
-        <div class="p-8 bg-white/5 mt-auto">
-            <div class="flex gap-4">
-                <input type="text" id="chat-input" placeholder="Введите вопрос..." class="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-sm focus:outline-none focus:border-white/40 transition-all text-white">
-                <button id="send-btn" class="w-16 h-16 bg-white text-black rounded-2xl flex items-center justify-center hover:bg-gray-200 transition-all">
-                    <i class="fas fa-paper-plane text-xl"></i>
-                </button>
-            </div>
-        </div>
+    <div class="fixed top-[73px] w-full bg-white/[0.02] border-b border-white/5 py-2 px-6 z-[999] overflow-hidden text-[10px] tracking-wider text-gray-500 flex items-center gap-4">
+        <span class="flex h-2 w-2 rounded-full bg-green-500 animate-ping"></span>
+        <div id="live-ticker-text" class="transition-all duration-500">Система мониторинга запущена. Все шлюзы стабильны.</div>
     </div>
 
-    <script>
-        // Particles Background
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 100, "density": { "enable": true, "value_area": 1000 } },
-                "color": { "value": "#ffffff" },
-                "opacity": { "value": 0.15, "random": true },
-                "size": { "value": 3, "random": true },
-                "line_linked": { "enable": true, "distance": 200, "color": "#ffffff", "opacity": 0.05, "width": 1 },
-                "move": { "enable": true, "speed": 1 }
-            }
-        });
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-32">
+        <span class="text-[10px] tracking-[0.6em] text-white/30 uppercase mb-4 reveal active">Premium Cybernetic Software</span>
+        <h1 class="text-6xl md:text-9xl font-black text-white tracking-tighter mb-6 reveal active" style="transition-delay: 0.1s;">EYNEC</h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-3xl italic font-light leading-relaxed reveal active" style="transition-delay: 0.2s;">
+            «Мы помогаем игрокам развиваться, а они помогают развиваться нам»
+        </p>
+        <div class="mt-12 flex flex-col sm:flex-row gap-4 reveal active" style="transition-delay: 0.3s;">
+            <a href="#bs" class="bg-white text-black text-xs font-bold uppercase tracking-widest px-10 py-4 rounded-sm hover:bg-gray-200 transition-all">Конфигуратор</a>
+            <a href="#status" class="border border-white/10 text-white text-xs font-bold uppercase tracking-widest px-10 py-4 rounded-sm hover:bg-white/5 transition-all">Статус ядра</a>
+        </div>
+    </section>
 
-        // Reveal effect on scroll
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 150) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal();
+    <section id="status" class="py-32 px-6 max-w-6xl mx-auto border-t border-white/5">
+        <div class="text-center mb-16">
+            <h2 class="text-2xl md:text-3xl text-white font-bold mb-3">Состояние модулей (2026)</h2>
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Автоматическое обновление каждые 60 секунд</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+            <div class="glass-premium p-6 rounded-2xl flex justify-between items-center">
+                <div>
+                    <h4 class="text-xs text-gray-400 uppercase font-bold">Brawl Stars Bypass</h4>
+                    <p class="text-[10px] text-gray-600 mt-1">Build v4.82 • Kernel Level</p>
+                </div>
+                <span class="bg-green-500/10 text-green-400 text-[10px] font-black px-3 py-1.5 rounded-md border border-green-500/20 uppercase tracking-wider">Undetected</span>
+            </div>
+            <div class="glass-premium p-6 rounded-2xl flex justify-between items-center">
+                <div>
+                    <h4 class="text-xs text-gray-400 uppercase font-bold">Clash Royale Core</h4>
+                    <p class="text-[10px] text-gray-600 mt-1">Build v3.11 • Memory Hook</p>
+                </div>
+                <span class="bg-green-500/10 text-green-400 text-[10px] font-black px-3 py-1.5 rounded-md border border-green-500/20 uppercase tracking-wider">Undetected</span>
+            </div>
+            <div class="glass-premium p-6 rounded-2xl flex justify-between items-center">
+                <div>
+                    <h4 class="text-xs text-gray-400 uppercase font-bold">Clash of Clans Grid</h4>
+                    <p class="text-[10px] text-gray-600 mt-1">Build v9.40 • Packet Injection</p>
+                </div>
+                <span class="bg-green-500/10 text-green-400 text-[10px] font-black px-3 py-1.5 rounded-md border border-green-500/20 uppercase tracking-wider">Undetected</span>
+            </div>
+        </div>
+    </section>
 
-        // CHAT LOGIC - RE-FIXED
-        const chatWindow = document.getElementById('ai-chat');
-        const chatInput = document.getElementById('chat-input');
-        const sendBtn = document.getElementById('send-btn');
-        const messagesContainer = document.getElementById('chat-messages');
-
-        function toggleChat() {
-            chatWindow.style.display = (chatWindow.style.display === 'flex') ? 'none' : 'flex';
-            if(chatWindow.style.display === 'flex') chatInput.focus();
-        }
-
-        function handleSend() {
-            const text = chatInput.value.trim();
-            if(!text) return;
-
-            // User bubble
-            messagesContainer.innerHTML += `
-                <div class="text-right">
-                    <div class="inline-block bg-white/10 p-5 rounded-[2rem] rounded-tr-none text-sm border border-white/10">
-                        ${text}
-                    </div>
-                </div>`;
-            
-            chatInput.value = '';
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-            // AI Logic
-            setTimeout(() => {
-                let response = "Я могу рассказать только о функциях Eynec для Brawl Stars, Clash Royale и Clash of Clans. Что именно тебя интересует?";
-                const low = text.toLowerCase();
-
-                if(low.includes('бравл') || low.includes('brawl')) {
-                    response = "В Brawl Stars у нас есть Aimbot, Auto-Dodge и Bush ESP. Все функции обходят анти-чит Supercell.";
-                } else if(low.includes('рояль') || low.includes('royale')) {
-                    response = "Для Clash Royale доступен Vision Core (карты/эликсир врага) и AI-бот для высадки карт.";
-                } else if(low.includes('купить') || low.includes('цена')) {
-                    response = "Цены указаны на сайте. Для покупки перейди в нашего бота: @Eynec_bot.";
-                }
-
-                messagesContainer.innerHTML += `
-                    <div class="text-left">
-                        <div class="inline-block bg-white/5 p-6 rounded-[2rem] rounded-tl-none text-sm italic text-gray-400 border border-white/5">
-                            AI: ${response}
-                        </div>
-                    </div>`;
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }, 600);
-        }
-
-        // Listeners for chat
-        sendBtn.addEventListener('click', handleSend);
-        chatInput.addEventListener('keypress', (e) => {
-            if(e.key === 'Enter') handleSend();
-        });
-
-    </script>
-</body>
-</html>
+    <section id="bs" class="py-32 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div
